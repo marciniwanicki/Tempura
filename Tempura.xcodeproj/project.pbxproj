@@ -11,7 +11,10 @@
 		5102C7082013E4800095E3C1 /* ios-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7042013E4800095E3C1 /* ios-debug.xcconfig */; };
 		5102C7092013E4800095E3C1 /* ios-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7052013E4800095E3C1 /* ios-release.xcconfig */; };
 		5102C70A2013E4800095E3C1 /* project-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7062013E4800095E3C1 /* project-debug.xcconfig */; };
-		5102C70C2013F1D50095E3C1 /* test_all.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5102C70B2013F1D50095E3C1 /* test_all.sh */; };
+		5102C7122013F3830095E3C1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5102C70F2013F3820095E3C1 /* LICENSE */; };
+		5102C7132013F3830095E3C1 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5102C7102013F3830095E3C1 /* Package.swift */; };
+		5102C7142013F3830095E3C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7112013F3830095E3C1 /* README.md */; };
+		5102C7162013F6AE0095E3C1 /* build_and_test_all.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7152013F6AE0095E3C1 /* build_and_test_all.sh */; };
 		51574D7120139E0F00BC8CC7 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */; };
 		51574D7320139E0F00BC8CC7 /* Tempura_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */; };
 		51A147892013E02800BB1258 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A147882013E02800BB1258 /* FileManager.swift */; };
@@ -33,7 +36,10 @@
 		5102C7042013E4800095E3C1 /* ios-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ios-debug.xcconfig"; sourceTree = "<group>"; };
 		5102C7052013E4800095E3C1 /* ios-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ios-release.xcconfig"; sourceTree = "<group>"; };
 		5102C7062013E4800095E3C1 /* project-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "project-debug.xcconfig"; sourceTree = "<group>"; };
-		5102C70B2013F1D50095E3C1 /* test_all.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test_all.sh; sourceTree = "<group>"; };
+		5102C70F2013F3820095E3C1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		5102C7102013F3830095E3C1 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		5102C7112013F3830095E3C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5102C7152013F6AE0095E3C1 /* build_and_test_all.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build_and_test_all.sh; sourceTree = "<group>"; };
 		51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tempura_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51574D602013941000BC8CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51574D6E20139E0F00BC8CC7 /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +82,9 @@
 		51574D3720138C3D00BC8CC7 = {
 			isa = PBXGroup;
 			children = (
+				5102C70F2013F3820095E3C1 /* LICENSE */,
+				5102C7112013F3830095E3C1 /* README.md */,
+				5102C7102013F3830095E3C1 /* Package.swift */,
 				51574D4D20138D7300BC8CC7 /* Bin */,
 				5102C7022013E4800095E3C1 /* Config */,
 				51574D57201393C900BC8CC7 /* Tempura */,
@@ -96,7 +105,7 @@
 		51574D4D20138D7300BC8CC7 /* Bin */ = {
 			isa = PBXGroup;
 			children = (
-				5102C70B2013F1D50095E3C1 /* test_all.sh */,
+				5102C7152013F6AE0095E3C1 /* build_and_test_all.sh */,
 			);
 			path = Bin;
 			sourceTree = "<group>";
@@ -221,9 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5102C70A2013E4800095E3C1 /* project-debug.xcconfig in Resources */,
-				5102C70C2013F1D50095E3C1 /* test_all.sh in Resources */,
+				5102C7162013F6AE0095E3C1 /* build_and_test_all.sh in Resources */,
+				5102C7122013F3830095E3C1 /* LICENSE in Resources */,
 				5102C7082013E4800095E3C1 /* ios-debug.xcconfig in Resources */,
 				5102C7092013E4800095E3C1 /* ios-release.xcconfig in Resources */,
+				5102C7142013F3830095E3C1 /* README.md in Resources */,
 				5102C7072013E4800095E3C1 /* project-release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5102C7132013F3830095E3C1 /* Package.swift in Sources */,
 				51A147892013E02800BB1258 /* FileManager.swift in Sources */,
 				51A1478B2013E04B00BB1258 /* TempuraFileManager.swift in Sources */,
 			);
