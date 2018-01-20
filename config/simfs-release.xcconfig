@@ -1,0 +1,10 @@
+//
+//  simfs-release.xcconfig
+//  simfs
+//
+//  Created by Marcin Iwanicki on 20/01/2018.
+//
+
+ONLY_ACTIVE_ARCH = NO
+IPHONEOS_DEPLOYMENT_TARGET = 11.2
+MACOSX_DEPLOYMENT_TARGET = 10.9

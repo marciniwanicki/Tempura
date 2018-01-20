@@ -1,0 +1,8 @@
+//
+//  simfs-ios-debug.xcconfig
+//  simfs-ios
+//
+//  Created by Marcin Iwanicki on 20/01/2018.
+//
+
+SDKROOT = iphoneos11.2
