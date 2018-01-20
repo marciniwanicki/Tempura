@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:/Users/marciniwanicki/simfs/Tempura.xcodeproj">
+      location = "group:Tempura.xcodeproj">
    </FileRef>
 </Workspace>
