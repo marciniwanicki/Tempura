@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51574D67201395CC00BC8CC7 /* simfs-ios-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51574D66201395CC00BC8CC7 /* simfs-ios-debug.xcconfig */; };
-		51574D69201395E100BC8CC7 /* simfs-ios-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51574D68201395E100BC8CC7 /* simfs-ios-release.xcconfig */; };
-		51574D7120139E0F00BC8CC7 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51574D7020139E0F00BC8CC7 /* tests.swift */; };
-		51574D7320139E0F00BC8CC7 /* simfs_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51574D5D2013941000BC8CC7 /* simfs_ios.framework */; };
+		5102C7072013E4800095E3C1 /* project-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7032013E4800095E3C1 /* project-release.xcconfig */; };
+		5102C7082013E4800095E3C1 /* ios-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7042013E4800095E3C1 /* ios-debug.xcconfig */; };
+		5102C7092013E4800095E3C1 /* ios-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7052013E4800095E3C1 /* ios-release.xcconfig */; };
+		5102C70A2013E4800095E3C1 /* project-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7062013E4800095E3C1 /* project-debug.xcconfig */; };
+		51574D7120139E0F00BC8CC7 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */; };
+		51574D7320139E0F00BC8CC7 /* Tempura_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */; };
 		51A147892013E02800BB1258 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A147882013E02800BB1258 /* FileManager.swift */; };
-		51A1478B2013E04B00BB1258 /* InMemoryFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */; };
+		51A1478B2013E04B00BB1258 /* TempuraFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1478A2013E04B00BB1258 /* TempuraFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,17 +28,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		51574D4E20138E0D00BC8CC7 /* simfs-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "simfs-debug.xcconfig"; sourceTree = "<group>"; };
-		51574D5020138E2300BC8CC7 /* simfs-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "simfs-release.xcconfig"; sourceTree = "<group>"; };
-		51574D5D2013941000BC8CC7 /* simfs_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = simfs_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5102C7032013E4800095E3C1 /* project-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "project-release.xcconfig"; sourceTree = "<group>"; };
+		5102C7042013E4800095E3C1 /* ios-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ios-debug.xcconfig"; sourceTree = "<group>"; };
+		5102C7052013E4800095E3C1 /* ios-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ios-release.xcconfig"; sourceTree = "<group>"; };
+		5102C7062013E4800095E3C1 /* project-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "project-debug.xcconfig"; sourceTree = "<group>"; };
+		51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tempura_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51574D602013941000BC8CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51574D66201395CC00BC8CC7 /* simfs-ios-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "simfs-ios-debug.xcconfig"; sourceTree = "<group>"; };
-		51574D68201395E100BC8CC7 /* simfs-ios-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "simfs-ios-release.xcconfig"; sourceTree = "<group>"; };
-		51574D6E20139E0F00BC8CC7 /* tests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		51574D7020139E0F00BC8CC7 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
+		51574D6E20139E0F00BC8CC7 /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
 		51574D7220139E0F00BC8CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A147882013E02800BB1258 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryFileManager.swift; sourceTree = "<group>"; };
+		51A1478A2013E04B00BB1258 /* TempuraFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempuraFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,20 +53,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51574D7320139E0F00BC8CC7 /* simfs_ios.framework in Frameworks */,
+				51574D7320139E0F00BC8CC7 /* Tempura_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5102C7022013E4800095E3C1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5102C7032013E4800095E3C1 /* project-release.xcconfig */,
+				5102C7042013E4800095E3C1 /* ios-debug.xcconfig */,
+				5102C7052013E4800095E3C1 /* ios-release.xcconfig */,
+				5102C7062013E4800095E3C1 /* project-debug.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		51574D3720138C3D00BC8CC7 = {
 			isa = PBXGroup;
 			children = (
-				51574D4D20138D7300BC8CC7 /* bin */,
-				51574D4C20138D6700BC8CC7 /* config */,
-				51574D57201393C900BC8CC7 /* simfs */,
-				51574D6F20139E0F00BC8CC7 /* tests-ios */,
+				51574D4D20138D7300BC8CC7 /* Bin */,
+				5102C7022013E4800095E3C1 /* Config */,
+				51574D57201393C900BC8CC7 /* Tempura */,
+				51574D6F20139E0F00BC8CC7 /* Tests */,
 				51574D4420138CD100BC8CC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,55 +85,44 @@
 		51574D4420138CD100BC8CC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51574D5D2013941000BC8CC7 /* simfs_ios.framework */,
-				51574D6E20139E0F00BC8CC7 /* tests-ios.xctest */,
+				51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */,
+				51574D6E20139E0F00BC8CC7 /* Tests-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51574D4C20138D6700BC8CC7 /* config */ = {
-			isa = PBXGroup;
-			children = (
-				51574D4E20138E0D00BC8CC7 /* simfs-debug.xcconfig */,
-				51574D5020138E2300BC8CC7 /* simfs-release.xcconfig */,
-				51574D66201395CC00BC8CC7 /* simfs-ios-debug.xcconfig */,
-				51574D68201395E100BC8CC7 /* simfs-ios-release.xcconfig */,
-			);
-			path = config;
-			sourceTree = "<group>";
-		};
-		51574D4D20138D7300BC8CC7 /* bin */ = {
+		51574D4D20138D7300BC8CC7 /* Bin */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = bin;
+			path = Bin;
 			sourceTree = "<group>";
 		};
-		51574D57201393C900BC8CC7 /* simfs */ = {
+		51574D57201393C900BC8CC7 /* Tempura */ = {
 			isa = PBXGroup;
 			children = (
-				51574D652013952600BC8CC7 /* sources */,
+				51574D652013952600BC8CC7 /* Sources */,
 				51574D602013941000BC8CC7 /* Info.plist */,
 			);
-			path = simfs;
+			path = Tempura;
 			sourceTree = "<group>";
 		};
-		51574D652013952600BC8CC7 /* sources */ = {
+		51574D652013952600BC8CC7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				51A147882013E02800BB1258 /* FileManager.swift */,
-				51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */,
+				51A1478A2013E04B00BB1258 /* TempuraFileManager.swift */,
 			);
-			path = sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		51574D6F20139E0F00BC8CC7 /* tests-ios */ = {
+		51574D6F20139E0F00BC8CC7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				51574D7020139E0F00BC8CC7 /* tests.swift */,
+				51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */,
 				51574D7220139E0F00BC8CC7 /* Info.plist */,
 			);
-			path = "tests-ios";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +138,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		51574D5C2013941000BC8CC7 /* simfs-ios */ = {
+		51574D5C2013941000BC8CC7 /* Tempura-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51574D622013941000BC8CC7 /* Build configuration list for PBXNativeTarget "simfs-ios" */;
+			buildConfigurationList = 51574D622013941000BC8CC7 /* Build configuration list for PBXNativeTarget "Tempura-iOS" */;
 			buildPhases = (
 				51574D582013941000BC8CC7 /* Sources */,
 				51574D592013941000BC8CC7 /* Frameworks */,
@@ -149,14 +151,14 @@
 			);
 			dependencies = (
 			);
-			name = "simfs-ios";
+			name = "Tempura-iOS";
 			productName = "simfs-ios";
-			productReference = 51574D5D2013941000BC8CC7 /* simfs_ios.framework */;
+			productReference = 51574D5D2013941000BC8CC7 /* Tempura_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		51574D6D20139E0F00BC8CC7 /* tests-ios */ = {
+		51574D6D20139E0F00BC8CC7 /* Tests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51574D7620139E0F00BC8CC7 /* Build configuration list for PBXNativeTarget "tests-ios" */;
+			buildConfigurationList = 51574D7620139E0F00BC8CC7 /* Build configuration list for PBXNativeTarget "Tests-iOS" */;
 			buildPhases = (
 				51574D6A20139E0F00BC8CC7 /* Sources */,
 				51574D6B20139E0F00BC8CC7 /* Frameworks */,
@@ -167,9 +169,9 @@
 			dependencies = (
 				51574D7520139E0F00BC8CC7 /* PBXTargetDependency */,
 			);
-			name = "tests-ios";
+			name = "Tests-iOS";
 			productName = "tests-ios";
-			productReference = 51574D6E20139E0F00BC8CC7 /* tests-ios.xctest */;
+			productReference = 51574D6E20139E0F00BC8CC7 /* Tests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +186,7 @@
 					51574D5C2013941000BC8CC7 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					51574D6D20139E0F00BC8CC7 = {
 						CreatedOnToolsVersion = 9.2;
@@ -192,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 51574D3B20138C3D00BC8CC7 /* Build configuration list for PBXProject "simfs" */;
+			buildConfigurationList = 51574D3B20138C3D00BC8CC7 /* Build configuration list for PBXProject "Tempura" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -204,8 +206,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				51574D5C2013941000BC8CC7 /* simfs-ios */,
-				51574D6D20139E0F00BC8CC7 /* tests-ios */,
+				51574D5C2013941000BC8CC7 /* Tempura-iOS */,
+				51574D6D20139E0F00BC8CC7 /* Tests-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -215,8 +217,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51574D67201395CC00BC8CC7 /* simfs-ios-debug.xcconfig in Resources */,
-				51574D69201395E100BC8CC7 /* simfs-ios-release.xcconfig in Resources */,
+				5102C70A2013E4800095E3C1 /* project-debug.xcconfig in Resources */,
+				5102C7082013E4800095E3C1 /* ios-debug.xcconfig in Resources */,
+				5102C7092013E4800095E3C1 /* ios-release.xcconfig in Resources */,
+				5102C7072013E4800095E3C1 /* project-release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51A147892013E02800BB1258 /* FileManager.swift in Sources */,
-				51A1478B2013E04B00BB1258 /* InMemoryFileManager.swift in Sources */,
+				51A1478B2013E04B00BB1258 /* TempuraFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51574D7120139E0F00BC8CC7 /* tests.swift in Sources */,
+				51574D7120139E0F00BC8CC7 /* TempuraFileManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +256,7 @@
 /* Begin PBXTargetDependency section */
 		51574D7520139E0F00BC8CC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 51574D5C2013941000BC8CC7 /* simfs-ios */;
+			target = 51574D5C2013941000BC8CC7 /* Tempura-iOS */;
 			targetProxy = 51574D7420139E0F00BC8CC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -260,21 +264,21 @@
 /* Begin XCBuildConfiguration section */
 		51574D3C20138C3D00BC8CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51574D4E20138E0D00BC8CC7 /* simfs-debug.xcconfig */;
+			baseConfigurationReference = 5102C7062013E4800095E3C1 /* project-debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		51574D3D20138C3D00BC8CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51574D5020138E2300BC8CC7 /* simfs-release.xcconfig */;
+			baseConfigurationReference = 5102C7032013E4800095E3C1 /* project-release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		51574D632013941000BC8CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51574D66201395CC00BC8CC7 /* simfs-ios-debug.xcconfig */;
+			baseConfigurationReference = 5102C7042013E4800095E3C1 /* ios-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -303,11 +307,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -327,12 +332,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = simfs/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Tempura/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.iwanicki.simfs-ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -345,7 +351,7 @@
 		};
 		51574D642013941000BC8CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51574D68201395E100BC8CC7 /* simfs-ios-release.xcconfig */;
+			baseConfigurationReference = 5102C7052013E4800095E3C1 /* ios-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -374,11 +380,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -392,12 +399,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = simfs/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Tempura/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.iwanicki.simfs-ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
@@ -410,6 +418,7 @@
 		};
 		51574D7720139E0F00BC8CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5102C7042013E4800095E3C1 /* ios-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -477,6 +486,7 @@
 		};
 		51574D7820139E0F00BC8CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5102C7052013E4800095E3C1 /* ios-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -538,7 +548,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		51574D3B20138C3D00BC8CC7 /* Build configuration list for PBXProject "simfs" */ = {
+		51574D3B20138C3D00BC8CC7 /* Build configuration list for PBXProject "Tempura" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51574D3C20138C3D00BC8CC7 /* Debug */,
@@ -547,7 +557,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51574D622013941000BC8CC7 /* Build configuration list for PBXNativeTarget "simfs-ios" */ = {
+		51574D622013941000BC8CC7 /* Build configuration list for PBXNativeTarget "Tempura-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51574D632013941000BC8CC7 /* Debug */,
@@ -556,7 +566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51574D7620139E0F00BC8CC7 /* Build configuration list for PBXNativeTarget "tests-ios" */ = {
+		51574D7620139E0F00BC8CC7 /* Build configuration list for PBXNativeTarget "Tests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51574D7720139E0F00BC8CC7 /* Debug */,

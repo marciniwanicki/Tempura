@@ -1,14 +1,14 @@
 //
-//  tests_ios.swift
-//  tests-ios
+//  TempuraFileManagerTests.swift
+//  Tests
 //
 //  Created by Marcin Iwanicki on 20/01/2018.
 //
 
 import XCTest
-import simfs
+import Tempura
 
-class tests_ios: XCTestCase {
+class TempuraFileManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,7 +26,7 @@ class tests_ios: XCTestCase {
     }
 
     func testMe() {
-        let sut = InMemoryFileManager()
+        let sut = TempuraFileManager()
         assert(sut.me() == "Marcin")
     }
     

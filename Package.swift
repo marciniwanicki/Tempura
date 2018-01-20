@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "simfs",
+    name: "Tempura",
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "simfs",
-            targets: ["simfs"]),
+            name: "Tempura",
+            targets: ["Tempura"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -19,12 +19,12 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "simfs",
+            name: "Tempura",
             dependencies: [],
-            path: "simfs/sources"),
+            path: "Tempura/Sources"),
         .testTarget(
-            name: "tests-ios",
-            dependencies: ["simfs"],
-            path: "tests-ios"),
+            name: "Tests-iOS",
+            dependencies: ["Tempura"],
+            path: "Tests"),
     ]
 )

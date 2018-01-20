@@ -1,13 +1,13 @@
 //
-//  InMemoryFileManager.swift
-//  simfs-ios
+//  TempuraFileManager.swift
+//  Tempura
 //
 //  Created by Marcin Iwanicki on 20/01/2018.
 //
 
 import Foundation
 
-public class InMemoryFileManager: FileManager {
+public class TempuraFileManager: FileManager {
 
     public init() {
     }
