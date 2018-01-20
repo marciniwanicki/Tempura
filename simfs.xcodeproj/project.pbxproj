@@ -11,6 +11,8 @@
 		51574D69201395E100BC8CC7 /* simfs-ios-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51574D68201395E100BC8CC7 /* simfs-ios-release.xcconfig */; };
 		51574D7120139E0F00BC8CC7 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51574D7020139E0F00BC8CC7 /* tests.swift */; };
 		51574D7320139E0F00BC8CC7 /* simfs_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51574D5D2013941000BC8CC7 /* simfs_ios.framework */; };
+		51A147892013E02800BB1258 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A147882013E02800BB1258 /* FileManager.swift */; };
+		51A1478B2013E04B00BB1258 /* InMemoryFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 		51574D6E20139E0F00BC8CC7 /* tests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51574D7020139E0F00BC8CC7 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		51574D7220139E0F00BC8CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51A147882013E02800BB1258 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 		51574D652013952600BC8CC7 /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				51A147882013E02800BB1258 /* FileManager.swift */,
+				51A1478A2013E04B00BB1258 /* InMemoryFileManager.swift */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 				TargetAttributes = {
 					51574D5C2013941000BC8CC7 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					51574D6D20139E0F00BC8CC7 = {
@@ -227,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A147892013E02800BB1258 /* FileManager.swift in Sources */,
+				51A1478B2013E04B00BB1258 /* InMemoryFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +411,7 @@
 		51574D7720139E0F00BC8CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -468,6 +478,7 @@
 		51574D7820139E0F00BC8CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

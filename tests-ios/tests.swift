@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import simfs
 
 class tests_ios: XCTestCase {
     
@@ -22,6 +23,11 @@ class tests_ios: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testMe() {
+        let sut = InMemoryFileManager()
+        assert(sut.me() == "Marcin")
     }
     
     func testPerformanceExample() {
