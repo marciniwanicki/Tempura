@@ -10,25 +10,25 @@ import XCTest
 
 class UnixPathTests: XCTestCase {
 
-    func testCreateWhenPathIsValid() {
-        // given
-        let validPath = "/valid/path.txt"
-
-        // when
-        let path = UnixPath(path: validPath)
-
-        // then
-        XCTAssertNotNil(path)
-    }
-
-    func testCreateWhenPathIsInvalid() {
-        // given
-        let invalidPath = "invalidPath"
-
-        // when
-        let path = UnixPath(path: invalidPath)
-
-        // then
-        XCTAssertNil(path)
-    }
+//    func testCreateWhenPathIsValid() {
+//        // given
+//        let validPath = "/valid/path.txt"
+//
+//        // when
+//        let path = UnixPath(path: validPath)
+//
+//        // then
+//        XCTAssertNotNil(path)
+//    }
+//
+//    func testCreateWhenPathIsInvalid() {
+//        // given
+//        let invalidPath = "invalidPath"
+//
+//        // when
+//        let path = UnixPath(path: invalidPath)
+//
+//        // then
+//        XCTAssertNil(path)
+//    }
 }

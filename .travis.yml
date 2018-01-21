@@ -8,3 +8,5 @@ install:
 script:
   - ./Scripts/swiftlint.sh
   - ./Scripts/build_and_test_all.sh
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
