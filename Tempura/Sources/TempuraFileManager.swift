@@ -15,4 +15,8 @@ public class TempuraFileManager: FileManager {
     public func me() -> String {
         return "Marcin"
     }
+
+    public func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool, attributes: [FileAttributeKey: Any]?) throws {
+        // nothing here yet
+    }
 }

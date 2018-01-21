@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Tempura
+@testable import Tempura
 
 class TempuraFileManagerTests: XCTestCase {
     
