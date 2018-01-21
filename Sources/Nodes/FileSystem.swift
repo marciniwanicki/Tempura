@@ -6,6 +6,11 @@ import Foundation
 
 class FileSystem {
 
+    enum Result {
+        case success
+        case error
+    }
+
     private static let rootInodeId: Int = 1
     private static let componentsSeparartor = "/"
 
@@ -56,6 +61,11 @@ class FileSystem {
             inodeId = subinodeId
         }
         return inodeId
+    }
+
+    private func addInode(_ inode: Inode, path: String) -> Result {
+        
+        return .error
     }
 
     private func generateInodeId() -> Int {

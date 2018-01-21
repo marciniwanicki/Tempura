@@ -21,6 +21,9 @@
 		51656966201505EB00C9303C /* Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51656960201505EB00C9303C /* Directories.swift */; };
 		51656967201505EB00C9303C /* Inode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51656961201505EB00C9303C /* Inode.swift */; };
 		51656968201505EB00C9303C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51656962201505EB00C9303C /* FileManager.swift */; };
+		5165696F20153FD800C9303C /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5165696E20153FD800C9303C /* Path.swift */; };
+		516569712015422F00C9303C /* UnixPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516569702015422F00C9303C /* UnixPath.swift */; };
+		5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5189F0B920154477002D725D /* UnixPathTests.swift */; };
 		524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		51656962201505EB00C9303C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		5165696A201513A000C9303C /* swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
 		5165696C2015147600C9303C /* install_swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_swiftlint.sh; sourceTree = "<group>"; };
+		5165696E20153FD800C9303C /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		516569702015422F00C9303C /* UnixPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPath.swift; sourceTree = "<group>"; };
+		5189F0B920154477002D725D /* UnixPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPathTests.swift; sourceTree = "<group>"; };
 		524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +134,7 @@
 		51574D6F20139E0F00BC8CC7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5189F0B72015445F002D725D /* Nodes */,
 				524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */,
 			);
 			path = Tests;
@@ -136,8 +143,8 @@
 		5165695B201505EB00C9303C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5165695C201505EB00C9303C /* TempuraFileManager.swift */,
 				5165695D201505EB00C9303C /* Nodes */,
+				5165695C201505EB00C9303C /* TempuraFileManager.swift */,
 				51656962201505EB00C9303C /* FileManager.swift */,
 			);
 			path = Sources;
@@ -146,12 +153,38 @@
 		5165695D201505EB00C9303C /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				516569722015423200C9303C /* Path */,
 				5165695E201505EB00C9303C /* FileSystem.swift */,
 				5165695F201505EB00C9303C /* Inodes.swift */,
-				51656960201505EB00C9303C /* Directories.swift */,
 				51656961201505EB00C9303C /* Inode.swift */,
+				51656960201505EB00C9303C /* Directories.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		516569722015423200C9303C /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				5165696E20153FD800C9303C /* Path.swift */,
+				516569702015422F00C9303C /* UnixPath.swift */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		5189F0B72015445F002D725D /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				5189F0B820154463002D725D /* Path */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		5189F0B820154463002D725D /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				5189F0B920154477002D725D /* UnixPathTests.swift */,
+			);
+			path = Path;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				51656967201505EB00C9303C /* Inode.swift in Sources */,
+				5165696F20153FD800C9303C /* Path.swift in Sources */,
+				516569712015422F00C9303C /* UnixPath.swift in Sources */,
 				51656964201505EB00C9303C /* FileSystem.swift in Sources */,
 				51656966201505EB00C9303C /* Directories.swift in Sources */,
 				51656968201505EB00C9303C /* FileManager.swift in Sources */,
@@ -300,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */,
 				524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
