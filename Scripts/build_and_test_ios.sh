@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ ! -d Tempura ]; then
+set -e
+
+if [ ! -d Sources ]; then
   cd ..
 fi
 

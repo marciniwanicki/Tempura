@@ -54,6 +54,8 @@
 		51656960201505EB00C9303C /* Directories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directories.swift; sourceTree = "<group>"; };
 		51656961201505EB00C9303C /* Inode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inode.swift; sourceTree = "<group>"; };
 		51656962201505EB00C9303C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		5165696A201513A000C9303C /* swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
+		5165696C2015147600C9303C /* install_swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_swiftlint.sh; sourceTree = "<group>"; };
 		524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,8 @@
 			children = (
 				5102C7152013F6AE0095E3C1 /* build_and_test_all.sh */,
 				5165695A2014EFF500C9303C /* build_and_test_ios.sh */,
+				5165696A201513A000C9303C /* swiftlint.sh */,
+				5165696C2015147600C9303C /* install_swiftlint.sh */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -171,6 +175,7 @@
 				51574D592013941000BC8CC7 /* Frameworks */,
 				51574D5A2013941000BC8CC7 /* Headers */,
 				51574D5B2013941000BC8CC7 /* Resources */,
+				516569692015136800C9303C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -260,6 +265,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		516569692015136800C9303C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./Scripts/swiftlint.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51574D582013941000BC8CC7 /* Sources */ = {
