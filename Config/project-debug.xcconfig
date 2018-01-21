@@ -8,3 +8,4 @@
 ONLY_ACTIVE_ARCH = YES
 IPHONEOS_DEPLOYMENT_TARGET = 11.2
 MACOSX_DEPLOYMENT_TARGET = 10.9
+SUPPORTED_PLATFORMS = iphonesimulator iphoneos macosx // appletvos watchos appletvsimulator watchsimulator
