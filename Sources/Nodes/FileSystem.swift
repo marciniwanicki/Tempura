@@ -64,7 +64,6 @@ class FileSystem {
     }
 
     private func addInode(_ inode: Inode, path: String) -> Result {
-        
         return .error
     }
 
