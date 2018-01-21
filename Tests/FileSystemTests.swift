@@ -14,4 +14,20 @@ class FileSystemTests: XCTestCase {
         // when / then
         XCTAssertTrue(sut.exists(path: "/"))
     }
+
+    func testExistsWhenDirectoryDoesNotExist() {
+        // given
+        let sut = Tempura.FileSystem()
+
+        // when / then
+        XCTAssertFalse(sut.exists(path: "/doesNotExist"))
+    }
+
+    func testExistsWhenUsingRelativePath() {
+        // given
+        let sut = Tempura.FileSystem()
+
+        // when / then
+        XCTAssertFalse(sut.exists(path: "relative"))
+    }
 }

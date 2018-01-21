@@ -11,4 +11,8 @@ class Inodes {
     func add(_ inodeId: Int, _ inode: Inode) {
         self.list[inodeId] = inode
     }
+
+    func inode(by inodeId: Int) -> Inode? {
+        return self.list[inodeId]
+    }
 }

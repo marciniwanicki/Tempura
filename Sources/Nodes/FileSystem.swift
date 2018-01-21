@@ -6,10 +6,13 @@ import Foundation
 
 class FileSystem {
 
+    private static let rootInodeId: Int = 1
+    private static let componentsSeparartor = "/"
+
     private let directories: Directories
     private let inodes: Inodes
 
-    private var inodeIdCounter: Int = 1
+    private var inodeIdCounter: Int = FileSystem.rootInodeId
 
     init() {
         self.inodes = Inodes()
@@ -19,15 +22,40 @@ class FileSystem {
     }
 
     func exists(path: String) -> Bool {
-        return false
+        return lookupInode(path: path) != nil
     }
 
     func lookupInode(path: String) -> Inode? {
-        return nil
+        guard let inodeId = lookupInodeId(path: path) else {
+            return nil
+        }
+
+        return self.inodes.inode(by: inodeId)
     }
 
-    private func lookupInodeId(path: String) -> Int {
-        return 0
+    private func lookupInodeId(path: String) -> Int? {
+        guard path.starts(with: FileSystem.componentsSeparartor) else {
+            return nil
+        }
+
+        guard let componentsSeparator = FileSystem.componentsSeparartor.first else {
+            return nil
+        }
+
+        if path == FileSystem.componentsSeparartor {
+            return FileSystem.rootInodeId
+        }
+
+        let components = path.split(separator: componentsSeparator)
+        var inodeId = FileSystem.rootInodeId
+        for component in components {
+            let inodesDictionary = self.directories.list(inodeId: inodeId)
+            guard let subinodeId = inodesDictionary?[String(component)] else {
+                return nil
+            }
+            inodeId = subinodeId
+        }
+        return inodeId
     }
 
     private func generateInodeId() -> Int {

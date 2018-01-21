@@ -11,13 +11,4 @@ public protocol FileManager {
 
     @available(iOS 5.0, *)
     func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool, attributes: [FileAttributeKey : Any]?) throws
-
-    func me() -> String
-}
-
-extension Foundation.FileManager: FileManager {
-
-    public func me() -> String {
-        return "FileManager - Marcin"
-    }
 }

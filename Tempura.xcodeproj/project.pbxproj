@@ -14,7 +14,6 @@
 		5102C7122013F3830095E3C1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5102C70F2013F3820095E3C1 /* LICENSE */; };
 		5102C7142013F3830095E3C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7112013F3830095E3C1 /* README.md */; };
 		5102C7162013F6AE0095E3C1 /* build_and_test_all.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5102C7152013F6AE0095E3C1 /* build_and_test_all.sh */; };
-		51574D7120139E0F00BC8CC7 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */; };
 		51574D7320139E0F00BC8CC7 /* Tempura.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51574D5D2013941000BC8CC7 /* Tempura.framework */; };
 		51656963201505EB00C9303C /* TempuraFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5165695C201505EB00C9303C /* TempuraFileManager.swift */; };
 		51656964201505EB00C9303C /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5165695E201505EB00C9303C /* FileSystem.swift */; };
@@ -47,7 +46,6 @@
 		51574D5D2013941000BC8CC7 /* Tempura.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tempura.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51574D602013941000BC8CC7 /* Tempura-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tempura-Info.plist"; sourceTree = "<group>"; };
 		51574D6E20139E0F00BC8CC7 /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
 		51574D7220139E0F00BC8CC7 /* Tests-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-iOS-Info.plist"; sourceTree = "<group>"; };
 		5165695A2014EFF500C9303C /* build_and_test_ios.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_and_test_ios.sh; sourceTree = "<group>"; };
 		5165695C201505EB00C9303C /* TempuraFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempuraFileManager.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 		51574D6F20139E0F00BC8CC7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				51574D7020139E0F00BC8CC7 /* TempuraFileManagerTests.swift */,
 				524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */,
 			);
 			path = Tests;
@@ -282,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51574D7120139E0F00BC8CC7 /* TempuraFileManagerTests.swift in Sources */,
 				524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
