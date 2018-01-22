@@ -14,14 +14,25 @@ struct UnixPath: Path {
     private let pathComponents: [String]
 
     init?(path: String) {
-        self.pathComponents = path.split(separator: UnixPath.separator).map { String($0) }
         guard path.first == UnixPath.separator else {
             return nil
         }
+        let pathComponents = path.split(separator: UnixPath.separator).map {
+            String($0)
+        }
+        self.init(components: [String(UnixPath.separator)] + pathComponents)
+    }
+
+    private init?(components: [String]) {
+        guard !components.isEmpty else {
+            return nil
+        }
+
+        self.pathComponents = components
     }
 
     func lastComponent() -> String {
-        return ""
+        return self.pathComponents.last ?? ""
     }
 
     func components() -> [String] {
@@ -29,6 +40,6 @@ struct UnixPath: Path {
     }
 
     func parent() -> Path? {
-        return nil
+        return UnixPath(components: Array(self.pathComponents.dropLast()))
     }
 }
