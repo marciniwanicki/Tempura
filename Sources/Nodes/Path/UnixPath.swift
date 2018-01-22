@@ -9,10 +9,15 @@ import Foundation
 
 struct UnixPath: Path {
 
-    private let path: String
+    static let separator: Character = "/"
+
+    private let pathComponents: [String]
 
     init?(path: String) {
-        self.path = path
+        self.pathComponents = path.split(separator: UnixPath.separator).map { String($0) }
+        guard path.first == UnixPath.separator else {
+            return nil
+        }
     }
 
     func lastComponent() -> String {
@@ -20,7 +25,7 @@ struct UnixPath: Path {
     }
 
     func components() -> [String] {
-        return []
+        return self.pathComponents
     }
 
     func parent() -> Path? {
