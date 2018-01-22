@@ -5,6 +5,9 @@
 build/
 DerivedData/
 
+## Code coverage
+*.xccoverage.plist
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
