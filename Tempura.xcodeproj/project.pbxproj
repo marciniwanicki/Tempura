@@ -24,7 +24,9 @@
 		5165696F20153FD800C9303C /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5165696E20153FD800C9303C /* Path.swift */; };
 		516569712015422F00C9303C /* UnixPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516569702015422F00C9303C /* UnixPath.swift */; };
 		5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5189F0B920154477002D725D /* UnixPathTests.swift */; };
+		524E83600E27330DF9E49E27 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E826B3291FB7D8137CEA1 /* Result.swift */; };
 		524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */; };
+		524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8DA15698CCF284CD6E06 /* Reason.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		5165696E20153FD800C9303C /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		516569702015422F00C9303C /* UnixPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPath.swift; sourceTree = "<group>"; };
 		5189F0B920154477002D725D /* UnixPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPathTests.swift; sourceTree = "<group>"; };
+		524E826B3291FB7D8137CEA1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
 		524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +162,8 @@
 				5165695F201505EB00C9303C /* Inodes.swift */,
 				51656961201505EB00C9303C /* Inode.swift */,
 				51656960201505EB00C9303C /* Directories.swift */,
+				524E826B3291FB7D8137CEA1 /* Result.swift */,
+				524E8DA15698CCF284CD6E06 /* Reason.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -328,6 +334,8 @@
 				51656968201505EB00C9303C /* FileManager.swift in Sources */,
 				51656965201505EB00C9303C /* Inodes.swift in Sources */,
 				51656963201505EB00C9303C /* TempuraFileManager.swift in Sources */,
+				524E83600E27330DF9E49E27 /* Result.swift in Sources */,
+				524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

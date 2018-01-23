@@ -10,6 +10,7 @@ import Foundation
 struct UnixPath: Path {
 
     static let separator: Character = "/"
+    static let root = UnixPath(path: "/")
 
     private let pathComponents: [String]
 
@@ -41,6 +42,10 @@ struct UnixPath: Path {
 
     func parent() -> Path? {
         return UnixPath(components: Array(self.pathComponents.dropLast()))
+    }
+
+    func string() {
+        return
     }
 }
 

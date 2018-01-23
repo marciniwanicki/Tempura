@@ -6,23 +6,6 @@ import Foundation
 
 class FileSystem {
 
-    enum Error {
-        case pathAlreadyExists
-    }
-
-    enum Result: Equatable {
-        case success
-        case error(reason: Error)
-
-        static func == (lhs: Result, rhs: Result) -> Bool {
-            switch (lhs, rhs) {
-                case (.success, .success): return true
-                case let (.error(reason: l), .error(reason: r)): return l == r
-                default: return false
-            }
-        }
-    }
-
     private static let rootInodeId: Int = 1
 
     private let directories: Directories
@@ -37,51 +20,75 @@ class FileSystem {
         self.directories = Directories(rootInodeId: self.inodeIdCounter)
     }
 
-    func exists(path: String) -> Bool {
-        return lookupInode(path: path) != nil
-    }
-
-    func lookupInode(path: String) -> Inode? {
-        guard let inodeId = lookupInodeId(path: path) else {
-            return nil
+    func exists(path string: String) -> Bool {
+        guard let path = UnixPath(path: string) else {
+            return false
         }
 
-        return self.inodes.inode(by: inodeId)
+        return exists(path: path)
     }
 
-    func createDirectory(path: String, createIntermediates: Bool = false) -> Result {
+    func lookupInode(path string: String) -> Result<Inode> {
+        guard let path = UnixPath(path: string) else {
+            return .failure(reason: .invalidPath)
+        }
+
+        return lookupInode(path: path)
+    }
+
+    func createDirectory(path string: String, createIntermediates: Bool = false) -> Result<String> {
+        guard let path = UnixPath(path: string) else {
+            return .failure(reason: .invalidPath)
+        }
         guard !exists(path: path) else {
-            return Result.error(reason: .pathAlreadyExists)
+            return .failure(reason: .pathAlreadyExists)
         }
 
         let inode = Inode(type: .directory)
-        return addInode(inode, path: path)
+        let result = addInode(inode, path: path)
+        switch result {
+        case .success: return .success(value: string)
+        case let .failure(reason:r): return .failure(reason: r)
+        }
     }
 
-    private func lookupInodeId(path: String) -> Int? {
-        let separator = String(UnixPath.separator)
-        guard path.starts(with: separator) else {
-            return nil
+    private func exists(path: UnixPath) -> Bool {
+        return lookupInode(path: path).isSuccess()
+    }
+
+    private func lookupInode(path: UnixPath) -> Result<Inode> {
+        let result = lookupInodeId(path: path)
+        switch result {
+        case let .failure(reason:r): return .failure(reason: r)
+        case let .success(value:v): return self.inodes.inode(by: v)
+        }
+    }
+
+    private func lookupInodeId(path: UnixPath) -> Result<Int> {
+        if path == UnixPath.root {
+            return .success(value: FileSystem.rootInodeId)
         }
 
-        if path == separator {
-            return FileSystem.rootInodeId
-        }
-
-        let components = path.split(separator: UnixPath.separator)
         var inodeId = FileSystem.rootInodeId
-        for component in components {
+        for component in path.components() {
             let inodesDictionary = self.directories.list(inodeId: inodeId)
-            guard let subinodeId = inodesDictionary?[String(component)] else {
-                return nil
+            guard let subinodeId = inodesDictionary?[component] else {
+                return .failure(reason: .inodeNotFound)
             }
             inodeId = subinodeId
         }
-        return inodeId
+        return .success(value: inodeId)
     }
 
-    private func addInode(_ inode: Inode, path: String) -> Result {
-        return .success
+    private func addInode(_ inode: Inode, path: UnixPath) -> Result<Int> {
+        guard !lookupInode(path: path).isSuccess() else {
+            return .failure(reason: .pathAlreadyExists)
+        }
+
+        let newInodeId = generateInodeId()
+        self.inodes.add(newInodeId, inode)
+
+        return .success(value: newInodeId)
     }
 
     private func generateInodeId() -> Int {

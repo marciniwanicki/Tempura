@@ -17,3 +17,10 @@ class Inode {
         self.type = type
     }
 }
+
+extension Inode: Equatable {
+
+    static func == (lhs: Inode, rhs: Inode) -> Bool {
+        return lhs.type == rhs.type
+    }
+}

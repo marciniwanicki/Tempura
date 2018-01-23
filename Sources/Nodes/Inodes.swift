@@ -12,7 +12,10 @@ class Inodes {
         self.list[inodeId] = inode
     }
 
-    func inode(by inodeId: Int) -> Inode? {
-        return self.list[inodeId]
+    func inode(by inodeId: Int) -> Result<Inode> {
+        guard let inode = self.list[inodeId] else {
+            return .failure(reason: .inodeNotFound)
+        }
+        return .success(value: inode)
     }
 }
