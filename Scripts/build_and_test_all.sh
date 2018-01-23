@@ -27,5 +27,6 @@ if [[ $sbexit != 0 ]]; then
 fi
 
 if [ -d "Tests" ]; then
-  swift test
+  swift package generate-xcodeproj
+  xcodebuild -scheme Tempura-iOS -enableCodeCoverage YES test
 fi
