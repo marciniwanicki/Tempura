@@ -76,4 +76,22 @@ class UnixPathTests: XCTestCase {
         // then
         XCTAssertEqual(["/", "dir1", "dir2"], parent?.components() ?? [])
     }
+
+    func testEqualWhenDifferentPaths() {
+        // given
+        let path1 = UnixPath(path: "/path/file1.txt")
+        let path2 = UnixPath(path: "/path/file2.txt")
+
+        // when / then
+        XCTAssertFalse(path1 == path2)
+    }
+
+    func testEqualWhenSamePaths() {
+        // given
+        let path1 = UnixPath(path: "/path/file.txt")
+        let path2 = UnixPath(path: "/path/file.txt")
+
+        // when / then
+        XCTAssertTrue(path1 == path2)
+    }
 }

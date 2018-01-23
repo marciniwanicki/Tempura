@@ -43,3 +43,10 @@ struct UnixPath: Path {
         return UnixPath(components: Array(self.pathComponents.dropLast()))
     }
 }
+
+extension UnixPath: Equatable {
+
+    static func == (lhs: UnixPath, rhs: UnixPath) -> Bool {
+        return lhs.components() == rhs.components()
+    }
+}

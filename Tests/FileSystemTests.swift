@@ -30,4 +30,12 @@ class FileSystemTests: XCTestCase {
         // when / then
         XCTAssertFalse(sut.exists(path: "relative"))
     }
+
+    func testAddRootPath() {
+        // given
+        let sut = Tempura.FileSystem()
+
+        // when / then
+        XCTAssertEqual(FileSystem.Result.error(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
+    }
 }

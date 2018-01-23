@@ -6,13 +6,24 @@ import Foundation
 
 class FileSystem {
 
-    enum Result {
+    enum Error {
+        case pathAlreadyExists
+    }
+
+    enum Result: Equatable {
         case success
-        case error
+        case error(reason: Error)
+
+        static func == (lhs: Result, rhs: Result) -> Bool {
+            switch (lhs, rhs) {
+                case (.success, .success): return true
+                case let (.error(reason: l), .error(reason: r)): return l == r
+                default: return false
+            }
+        }
     }
 
     private static let rootInodeId: Int = 1
-    private static let componentsSeparartor = "/"
 
     private let directories: Directories
     private let inodes: Inodes
@@ -38,20 +49,26 @@ class FileSystem {
         return self.inodes.inode(by: inodeId)
     }
 
+    func createDirectory(path: String, createIntermediates: Bool = false) -> Result {
+        guard !exists(path: path) else {
+            return Result.error(reason: .pathAlreadyExists)
+        }
+
+        let inode = Inode(type: .directory)
+        return addInode(inode, path: path)
+    }
+
     private func lookupInodeId(path: String) -> Int? {
-        guard path.starts(with: FileSystem.componentsSeparartor) else {
+        let separator = String(UnixPath.separator)
+        guard path.starts(with: separator) else {
             return nil
         }
 
-        guard let componentsSeparator = FileSystem.componentsSeparartor.first else {
-            return nil
-        }
-
-        if path == FileSystem.componentsSeparartor {
+        if path == separator {
             return FileSystem.rootInodeId
         }
 
-        let components = path.split(separator: componentsSeparator)
+        let components = path.split(separator: UnixPath.separator)
         var inodeId = FileSystem.rootInodeId
         for component in components {
             let inodesDictionary = self.directories.list(inodeId: inodeId)
@@ -64,7 +81,7 @@ class FileSystem {
     }
 
     private func addInode(_ inode: Inode, path: String) -> Result {
-        return .error
+        return .success
     }
 
     private func generateInodeId() -> Int {
