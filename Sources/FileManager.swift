@@ -9,8 +9,8 @@ import Foundation
 
 public protocol FileManager {
 
-    @available(iOS 5.0, *)
-    func createDirectory(at url: URL,
-                         withIntermediateDirectories createIntermediates: Bool,
-                         attributes: [FileAttributeKey : Any]?) throws
+  @available (iOS 5.0, *)
+  func createDirectory(at url: URL,
+                       withIntermediateDirectories createIntermediates: Bool,
+                       attributes: [FileAttributeKey: Any]?) throws
 }

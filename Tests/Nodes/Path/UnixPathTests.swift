@@ -10,88 +10,112 @@ import XCTest
 
 class UnixPathTests: XCTestCase {
 
-    func testCreateWhenPathIsValid() {
-        // when
-        let sut = UnixPath(path: "/valid/path.txt")
+  func testCreateWhenPathIsEmpty() {
+    // when
+    let sut = UnixPath(path: "")
 
-        // then
-        XCTAssertNotNil(sut)
-    }
+    // then
+    XCTAssertNil(sut)
+  }
 
-    func testCreateWhenPathIsInvalid() {
-        // when
-        let sut = UnixPath(path: "invalidPath")
+  func testCreateWhenPathIsValid() {
+    // when
+    let sut = UnixPath(path: "/valid/path.txt")
 
-        // then
-        XCTAssertNil(sut)
-    }
+    // then
+    XCTAssertNotNil(sut)
+  }
 
-    func testLastComponentWhenPathToRootDirectory() {
-        // given
-        let sut = UnixPath(path: "/")
+  func testCreateWhenPathIsInvalid() {
+    // when
+    let sut = UnixPath(path: "invalidPath")
 
-        // when / then
-        XCTAssertEqual("/", sut?.lastComponent())
-    }
+    // then
+    XCTAssertNil(sut)
+  }
 
-    func testLastComponentWhenPathIsValid() {
-        // given
-        let sut = UnixPath(path: "/valid/path.txt")
+  func testLastComponentWhenPathToRootDirectory() {
+    // given
+    let sut = UnixPath(path: "/")
 
-        // when / then
-        XCTAssertEqual("path.txt", sut?.lastComponent())
-    }
+    // when / then
+    XCTAssertEqual("/", sut?.lastComponent())
+  }
 
-    func testComponentsWhenPathToRootDirectory() {
-        // given
-        let sut = UnixPath(path: "/")
+  func testLastComponentWhenPathIsValid() {
+    // given
+    let sut = UnixPath(path: "/valid/path.txt")
 
-        // when / then
-        XCTAssertEqual(["/"], sut?.components() ?? [])
-    }
+    // when / then
+    XCTAssertEqual("path.txt", sut?.lastComponent())
+  }
 
-    func testComponentsWhenPathIsLonger() {
-        // given
-        let sut = UnixPath(path: "/dir1/dir2/file1.txt")
+  func testComponentsWhenPathToRootDirectory() {
+    // given
+    let sut = UnixPath(path: "/")
 
-        // when / then
-        XCTAssertEqual(["/", "dir1", "dir2", "file1.txt"], sut?.components() ?? [])
-    }
+    // when / then
+    XCTAssertEqual(["/"], sut?.components() ?? [])
+  }
 
-    func testParentWhenPathToRootDirectory() {
-        // given
-        let sut = UnixPath(path: "/")
+  func testComponentsWhenPathIsLonger() {
+    // given
+    let sut = UnixPath(path: "/dir1/dir2/file1.txt")
 
-        // when / then
-        XCTAssertNil(sut?.parent())
-    }
+    // when / then
+    XCTAssertEqual(["/", "dir1", "dir2", "file1.txt"], sut?.components() ?? [])
+  }
 
-    func testParentWhenPathIsLonger() {
-        // given
-        let sut = UnixPath(path: "/dir1/dir2/file1.txt")
+  func testParentWhenPathToRootDirectory() {
+    // given
+    let sut = UnixPath(path: "/")
 
-        // when
-        let parent = sut?.parent()
+    // when / then
+    XCTAssertNil(sut?.parent())
+  }
 
-        // then
-        XCTAssertEqual(["/", "dir1", "dir2"], parent?.components() ?? [])
-    }
+  func testParentWhenPathIsLonger() {
+    // given
+    let sut = UnixPath(path: "/dir1/dir2/file1.txt")
 
-    func testEqualWhenDifferentPaths() {
-        // given
-        let path1 = UnixPath(path: "/path/file1.txt")
-        let path2 = UnixPath(path: "/path/file2.txt")
+    // when
+    let parent = sut?.parent()
 
-        // when / then
-        XCTAssertFalse(path1 == path2)
-    }
+    // then
+    XCTAssertEqual(["/", "dir1", "dir2"], parent?.components() ?? [])
+  }
 
-    func testEqualWhenSamePaths() {
-        // given
-        let path1 = UnixPath(path: "/path/file.txt")
-        let path2 = UnixPath(path: "/path/file.txt")
+  func testEqualWhenDifferentPaths() {
+    // given
+    let path1 = UnixPath(path: "/path/file1.txt")
+    let path2 = UnixPath(path: "/path/file2.txt")
 
-        // when / then
-        XCTAssertTrue(path1 == path2)
-    }
+    // when / then
+    XCTAssertFalse(path1 == path2)
+  }
+
+  func testEqualWhenSamePaths() {
+    // given
+    let path1 = UnixPath(path: "/path/file.txt")
+    let path2 = UnixPath(path: "/path/file.txt")
+
+    // when / then
+    XCTAssertTrue(path1 == path2)
+  }
+
+  func testDescriptionRootPath() {
+    // given
+    let sut = UnixPath(path: "/")
+
+    // when / then
+    XCTAssertEqual("/", sut?.description)
+  }
+
+  func testDescriptionValidPath() {
+    // given
+    let sut = UnixPath(path: "/path/file.txt")
+
+    // when / then
+    XCTAssertEqual("/path/file.txt", sut?.description)
+  }
 }

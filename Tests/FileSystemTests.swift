@@ -7,44 +7,44 @@ import XCTest
 
 class FileSystemTests: XCTestCase {
 
-    func testExistsRootDirectory() {
-        // given
-        let sut = Tempura.FileSystem()
+  func testExistsRootDirectory() {
+    // given
+    let sut = Tempura.FileSystem()
 
-        // when / then
-        XCTAssertTrue(sut.exists(path: "/"))
-    }
+    // when / then
+    XCTAssertTrue(sut.exists(path: "/"))
+  }
 
-    func testExistsWhenDirectoryDoesNotExist() {
-        // given
-        let sut = Tempura.FileSystem()
+  func testExistsWhenDirectoryDoesNotExist() {
+    // given
+    let sut = Tempura.FileSystem()
 
-        // when / then
-        XCTAssertFalse(sut.exists(path: "/doesNotExist"))
-    }
+    // when / then
+    XCTAssertFalse(sut.exists(path: "/doesNotExist"))
+  }
 
-    func testExistsWhenUsingRelativePath() {
-        // given
-        let sut = Tempura.FileSystem()
+  func testExistsWhenUsingRelativePath() {
+    // given
+    let sut = Tempura.FileSystem()
 
-        // when / then
-        XCTAssertFalse(sut.exists(path: "relative"))
-    }
+    // when / then
+    XCTAssertFalse(sut.exists(path: "relative"))
+  }
 
-    func testAddRootPath() {
-        // given
-        let sut = Tempura.FileSystem()
+  func testAddRootPath() {
+    // given
+    let sut = Tempura.FileSystem()
 
-        // when / then
-        XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
-    }
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
+  }
 
-    func testAddInvalidPath() {
-        // given
-        let sut = Tempura.FileSystem()
+  func testAddInvalidPath() {
+    // given
+    let sut = Tempura.FileSystem()
 
-        // when / then
-        XCTAssertEqual(Result.failure(reason: .invalidPath),
-                sut.createDirectory(path: "invalidPath/file.txt"))
-    }
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .invalidPath),
+            sut.createDirectory(path: "invalidPath/file.txt"))
+  }
 }
