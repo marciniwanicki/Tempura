@@ -28,5 +28,5 @@ fi
 
 if [ -d "Tests" ]; then
   swift package generate-xcodeproj
-  xcodebuild -scheme Tempura-iOS -enableCodeCoverage YES test
+  xcodebuild -scheme Tempura -enableCodeCoverage YES test
 fi
