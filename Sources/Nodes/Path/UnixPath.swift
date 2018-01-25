@@ -43,10 +43,6 @@ struct UnixPath: Path {
   func parent() -> Path? {
     return UnixPath(components: Array(self.pathComponents.dropLast()))
   }
-
-  func string() {
-    return
-  }
 }
 
 extension UnixPath: Equatable {
