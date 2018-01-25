@@ -221,7 +221,7 @@
 			dependencies = (
 			);
 			name = Tempura;
-			productName = "simfs-ios";
+			productName = "tempura";
 			productReference = 51574D5D2013941000BC8CC7 /* Tempura.framework */;
 			productType = "com.apple.product-type.framework";
 		};
