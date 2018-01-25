@@ -16,7 +16,19 @@ class Directories {
     return self.list[inodeId]
   }
 
-  func createDirectory(inodeId: Int, parentInodeId: Int) -> [String: Int] {
+  func add(inode: (inodeId: Int, filename: String), parentInodeId: Int, directory: Bool = false) -> Result<Int> {
+    guard var parentDirectory = self.list[parentInodeId] else {
+      return .failure(reason: .inodeNotFound)
+    }
+
+    parentDirectory[inode.filename] = inode.inodeId
+
+    self.list[parentInodeId] = parentDirectory
+
+    return .success(value: inode.inodeId)
+  }
+
+  private func createDirectory(inodeId: Int, parentInodeId: Int) -> [String: Int] {
     var list = [String: Int]()
     list["."] = inodeId
     list[".."] = parentInodeId

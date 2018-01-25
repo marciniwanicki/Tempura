@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Path {
+protocol Path: CustomStringConvertible {
 
   func lastComponent() -> String
 
