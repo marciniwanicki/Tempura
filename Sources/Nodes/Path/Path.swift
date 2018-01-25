@@ -9,9 +9,9 @@ import Foundation
 
 protocol Path {
 
-    func lastComponent() -> String
+  func lastComponent() -> String
 
-    func components() -> [String]
+  func components() -> [String]
 
-    func parent() -> Path?
+  func parent() -> Path?
 }
