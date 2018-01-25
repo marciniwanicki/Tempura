@@ -6,20 +6,20 @@ import Foundation
 
 class Directories {
 
-  private var list = [Int: [String: Int]]()
+    private var list = [Int: [String: Int]]()
 
-  init(rootInodeId: Int) {
-    self.list[rootInodeId] = createDirectory(inodeId: rootInodeId, parentInodeId: rootInodeId)
-  }
+    init(rootInodeId: Int) {
+        self.list[rootInodeId] = createDirectory(inodeId: rootInodeId, parentInodeId: rootInodeId)
+    }
 
-  func list(inodeId: Int) -> [String: Int]? {
-    return self.list[inodeId]
-  }
+    func list(inodeId: Int) -> [String: Int]? {
+        return self.list[inodeId]
+    }
 
-  func createDirectory(inodeId: Int, parentInodeId: Int) -> [String: Int] {
-    var list = [String: Int]()
-    list["."] = inodeId
-    list[".."] = parentInodeId
-    return list
-  }
+    func createDirectory(inodeId: Int, parentInodeId: Int) -> [String: Int] {
+        var list = [String: Int]()
+        list["."] = inodeId
+        list[".."] = parentInodeId
+        return list
+    }
 }

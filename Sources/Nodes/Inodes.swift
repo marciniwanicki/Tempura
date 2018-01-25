@@ -6,16 +6,16 @@ import Foundation
 
 class Inodes {
 
-  private var list = [Int: Inode]()
+    private var list = [Int: Inode]()
 
-  func add(_ inodeId: Int, _ inode: Inode) {
-    self.list[inodeId] = inode
-  }
-
-  func inode(by inodeId: Int) -> Result<Inode> {
-    guard let inode = self.list[inodeId] else {
-      return .failure(reason: .inodeNotFound)
+    func add(_ inodeId: Int, _ inode: Inode) {
+        self.list[inodeId] = inode
     }
-    return .success(value: inode)
-  }
+
+    func inode(by inodeId: Int) -> Result<Inode> {
+        guard let inode = self.list[inodeId] else {
+            return .failure(reason: .inodeNotFound)
+        }
+        return .success(value: inode)
+    }
 }

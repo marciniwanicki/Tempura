@@ -5,7 +5,7 @@
 import Foundation
 
 enum Reason {
-  case invalidPath
-  case pathAlreadyExists
-  case inodeNotFound
+    case invalidPath
+    case pathAlreadyExists
+    case inodeNotFound
 }
