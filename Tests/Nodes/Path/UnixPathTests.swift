@@ -10,6 +10,14 @@ import XCTest
 
 class UnixPathTests: XCTestCase {
 
+  func testCreateWhenPathIsEmpty() {
+    // when
+    let sut = UnixPath(path: "")
+
+    // then
+    XCTAssertNil(sut)
+  }
+
   func testCreateWhenPathIsValid() {
     // when
     let sut = UnixPath(path: "/valid/path.txt")
@@ -93,5 +101,21 @@ class UnixPathTests: XCTestCase {
 
     // when / then
     XCTAssertTrue(path1 == path2)
+  }
+
+  func testDescriptionRootPath() {
+    // given
+    let sut = UnixPath(path: "/")
+
+    // when / then
+    XCTAssertEqual("/", sut?.description)
+  }
+
+  func testDescriptionValidPath() {
+    // given
+    let sut = UnixPath(path: "/path/file.txt")
+
+    // when / then
+    XCTAssertEqual("/path/file.txt", sut?.description)
   }
 }

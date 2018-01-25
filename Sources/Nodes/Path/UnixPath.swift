@@ -55,3 +55,12 @@ extension UnixPath: Equatable {
     return lhs.components() == rhs.components()
   }
 }
+
+extension UnixPath: CustomStringConvertible {
+
+  var description: String {
+    return self.pathComponents.count == 1
+        ? lastComponent()
+        : String(components().joined(separator: String(UnixPath.separator)).dropFirst())
+  }
+}
