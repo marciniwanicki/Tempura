@@ -31,7 +31,7 @@ class FileSystemTests: XCTestCase {
     XCTAssertFalse(sut.exists(path: "relative"))
   }
 
-  func testAddRootPath() {
+  func testCreateDirectoryRootPath() {
     // given
     let sut = Tempura.FileSystem()
 
@@ -39,12 +39,29 @@ class FileSystemTests: XCTestCase {
     XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
   }
 
-  func testAddInvalidPath() {
+  func testCreateDirectoryInvalidPath() {
     // given
     let sut = Tempura.FileSystem()
 
     // when / then
     XCTAssertEqual(Result.failure(reason: .invalidPath),
         sut.createDirectory(path: "invalidPath/file.txt"))
+  }
+
+  func testCreateDirectoryValidPathWithoutSubdirectory() {
+    // given
+    let sut = Tempura.FileSystem()
+
+    // when / then
+    XCTAssertEqual(Result.success(value: "/testme"), sut.createDirectory(path: "/testme"))
+  }
+
+  func testCreateDirectoryValidPathWithoutSubdirectoryThatAlreadyExists() {
+    // given
+    let sut = Tempura.FileSystem()
+    _ = sut.createDirectory(path: "/testme")
+
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))
   }
 }
