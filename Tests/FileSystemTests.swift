@@ -97,4 +97,12 @@ class FileSystemTests: XCTestCase {
     // when / then
     XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))
   }
+
+  func testCreateDirectoryParentPathDoesExist() {
+    // given
+    let sut = Tempura.FileSystem()
+
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .invalidPath(path: "/test")), sut.createDirectory(path: "/test/test.txt"))
+  }
 }

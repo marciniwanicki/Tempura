@@ -33,7 +33,7 @@ struct UnixPath: Path {
   }
 
   func lastComponent() -> String {
-    return self.pathComponents.last ?? ""
+    return self.pathComponents.last!
   }
 
   func components() -> [String] {

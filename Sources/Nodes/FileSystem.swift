@@ -40,9 +40,6 @@ class FileSystem {
     guard let path = UnixPath(path: string) else {
       return .failure(reason: .invalidPath(path: string))
     }
-    guard !exists(path: path) else {
-      return .failure(reason: .pathAlreadyExists)
-    }
 
     let inode = Inode(type: .directory)
     let result = addInode(inode, path: path)
@@ -99,10 +96,9 @@ class FileSystem {
 
     let newInodeId = generateInodeId()
 
-    guard self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()),
-                               parentInodeId: parentNodeId).isSuccess() else {
-      return .failure(reason: .invalidPath(path: parentPath.description))
-    }
+    // add operation cannot fail at that stage
+    _ = self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()),
+                             parentInodeId: parentNodeId)
 
     self.inodes.add(newInodeId, inode)
 
