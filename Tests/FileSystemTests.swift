@@ -31,6 +31,39 @@ class FileSystemTests: XCTestCase {
     XCTAssertFalse(sut.exists(path: "relative"))
   }
 
+  func testLookupInodeForEmptyPath() {
+    // given
+    let sut = Tempura.FileSystem()
+
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .invalidPath(path: "")), sut.lookupInode(path: ""))
+  }
+
+  func testLookupInodeForRootPath() {
+    // given
+    let sut = Tempura.FileSystem()
+
+    // when / then
+    XCTAssertEqual(Result.success(value: Inode(type: .directory)), sut.lookupInode(path: "/"))
+  }
+
+  func testLookupInodeForExistingPath() {
+    // given
+    let sut = Tempura.FileSystem()
+    _ = sut.createDirectory(path: "/testme")
+
+    // when / then
+    XCTAssertEqual(Result.success(value: Inode(type: .directory)), sut.lookupInode(path: "/testme"))
+  }
+
+  func testLookupInodeForNotExistingPath() {
+    // given
+    let sut = Tempura.FileSystem()
+
+    // when / then
+    XCTAssertEqual(Result.failure(reason: .inodeNotFound), sut.lookupInode(path: "/testme"))
+  }
+
   func testCreateDirectoryRootPath() {
     // given
     let sut = Tempura.FileSystem()
