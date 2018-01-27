@@ -1,6 +1,10 @@
 ## IDE
 .idea
 
+## Shortcuts 
+/test
+/lint
+
 ## Build generated
 build/
 DerivedData/
