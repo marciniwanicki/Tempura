@@ -27,6 +27,7 @@
 		524E83600E27330DF9E49E27 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E826B3291FB7D8137CEA1 /* Result.swift */; };
 		524E89354CF2956DB6590545 /* InodesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E81151C9F19BD1448BA36 /* InodesTests.swift */; };
 		524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */; };
+		524E8D4592D69FC6C08BC5F2 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E86681D9932A541A3A446 /* ResultTests.swift */; };
 		524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8DA15698CCF284CD6E06 /* Reason.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		5189F0B920154477002D725D /* UnixPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPathTests.swift; sourceTree = "<group>"; };
 		524E81151C9F19BD1448BA36 /* InodesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InodesTests.swift; sourceTree = "<group>"; };
 		524E826B3291FB7D8137CEA1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		524E86681D9932A541A3A446 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
 		524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 			children = (
 				5189F0B72015445F002D725D /* Nodes */,
 				524E8E65BC8594ABFA90CEBA /* FileSystemTests.swift */,
+				524E86681D9932A541A3A446 /* ResultTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */,
 				524E893E2D2E7FF3560D4046 /* FileSystemTests.swift in Sources */,
 				524E89354CF2956DB6590545 /* InodesTests.swift in Sources */,
+				524E8D4592D69FC6C08BC5F2 /* ResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
