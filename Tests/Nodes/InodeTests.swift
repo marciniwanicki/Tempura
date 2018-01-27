@@ -5,7 +5,7 @@
 import XCTest
 @testable import Tempura
 
-class InodesTests: XCTestCase {
+class InodeTests: XCTestCase {
 
   func testEqualWhenTheSame() {
     // when
