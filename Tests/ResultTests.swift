@@ -38,4 +38,49 @@ class ResultTests: XCTestCase {
     // when / then
     XCTAssertNil(sut.value())
   }
+
+  func testEqualWhenTheSameSuccess() {
+    // given
+    let t1 = Result<String>.success(value: "A")
+    let t2 = Result<String>.success(value: "A")
+
+    // when / then
+    XCTAssertTrue(t1 == t2)
+  }
+
+  func testEqualWhenDifferentSuccess() {
+    // given
+    let t1 = Result<String>.success(value: "A")
+    let t2 = Result<String>.success(value: "B")
+
+    // when / then
+    XCTAssertFalse(t1 == t2)
+  }
+
+  func testEqualWhenFailureAndSuccess() {
+    // given
+    let t1 = Result<String>.success(value: "A")
+    let t2 = Result<String>.failure(reason: .pathAlreadyExists)
+
+    // when / then
+    XCTAssertFalse(t1 == t2)
+  }
+
+  func testEqualWhenTheSameFailures() {
+    // given
+    let t1 = Result<String>.failure(reason: .pathAlreadyExists)
+    let t2 = Result<String>.failure(reason: .pathAlreadyExists)
+
+    // when / then
+    XCTAssertTrue(t1 == t2)
+  }
+
+  func testEqualWhenDifferentFailures() {
+    // given
+    let t1 = Result<String>.failure(reason: .pathAlreadyExists)
+    let t2 = Result<String>.failure(reason: .inodeNotFound)
+
+    // when / then
+    XCTAssertFalse(t1 == t2)
+  }
 }
