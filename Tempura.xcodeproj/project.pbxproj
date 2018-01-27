@@ -28,7 +28,9 @@
 		524E83600E27330DF9E49E27 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E826B3291FB7D8137CEA1 /* Result.swift */; };
 		524E89354CF2956DB6590545 /* InodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E81151C9F19BD1448BA36 /* InodeTests.swift */; };
 		524E8C717B175F060E0A3203 /* InodesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8F9E1AD5AE5D0766727F /* InodesTests.swift */; };
+		524E8CB32D13DDFBF00146AB /* FileSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E8BF7818B483CB9237F /* FileSystemMock.swift */; };
 		524E8E52B642EC8453357A98 /* DictionariesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */; };
+		524E8F022A5141FD46164111 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */; };
 		524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8DA15698CCF284CD6E06 /* Reason.swift */; };
 		524E8FBE37D201A2EB7F2E84 /* FileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E80B25384799E6D10450F /* FileSystemTests.swift */; };
 /* End PBXBuildFile section */
@@ -73,7 +75,9 @@
 		524E826B3291FB7D8137CEA1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		524E8638932C11EF4C2DB5A1 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionariesTests.swift; sourceTree = "<group>"; };
+		524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
 		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
+		524E8E8BF7818B483CB9237F /* FileSystemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemMock.swift; sourceTree = "<group>"; };
 		524E8F9E1AD5AE5D0766727F /* InodesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InodesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				5189F0B72015445F002D725D /* Nodes */,
+				524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */,
+				524E8851962E37328455899B /* Mocks */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -203,6 +209,14 @@
 				5189F0B920154477002D725D /* UnixPathTests.swift */,
 			);
 			path = Path;
+			sourceTree = "<group>";
+		};
+		524E8851962E37328455899B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				524E8E8BF7818B483CB9237F /* FileSystemMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +375,8 @@
 				524E8FBE37D201A2EB7F2E84 /* FileSystemTests.swift in Sources */,
 				524E8E52B642EC8453357A98 /* DictionariesTests.swift in Sources */,
 				524E8C717B175F060E0A3203 /* InodesTests.swift in Sources */,
+				524E8F022A5141FD46164111 /* TempuraFileManagerTests.swift in Sources */,
+				524E8CB32D13DDFBF00146AB /* FileSystemMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

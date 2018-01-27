@@ -2,8 +2,6 @@
 // Created by Marcin Iwanicki on 27/01/2018.
 //
 
-import Foundation
-
 import XCTest
 @testable import Tempura
 

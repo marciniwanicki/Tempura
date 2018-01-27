@@ -7,14 +7,17 @@
 
 import Foundation
 
-public class TempuraFileManager: FileManager {
+class TempuraFileManager: FileManager {
 
-  public init() {
+  private let fileSystem: FileSystem
+
+  init(fileSystem: FileSystem) {
+    self.fileSystem = fileSystem
   }
 
   public func createDirectory(at url: URL,
                               withIntermediateDirectories createIntermediates: Bool,
                               attributes: [FileAttributeKey: Any]?) throws {
-    // nothing here yet
+    _ = self.fileSystem.createDirectory(path: url.path, createIntermediates: createIntermediates)
   }
 }
