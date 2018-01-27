@@ -19,11 +19,7 @@ class TempuraFileManagerTests: XCTestCase {
     let sut = TempuraFileManager(fileSystem: fileSystemMock)
 
     // when
-    do {
-      try sut.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-    } catch let exception {
-      XCTFail("Unexpected exception \(exception)")
-    }
+    try? sut.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
 
     // then
     let fsCalls = fileSystemMock.createDirectoryCalls
