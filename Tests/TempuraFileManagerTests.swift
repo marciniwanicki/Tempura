@@ -15,7 +15,7 @@ class TempuraFileManagerTests: XCTestCase {
   func testCreateFirstDirectoryWithoutIntermediates() {
     // given
     let fileSystemMock = FileSystemMock()
-    let url = URL(string: "/file.txt")!
+    let url = URL(string: "/dir1")!
     let sut = TempuraFileManager(fileSystem: fileSystemMock)
 
     // when
@@ -24,7 +24,23 @@ class TempuraFileManagerTests: XCTestCase {
     // then
     let fsCalls = fileSystemMock.createDirectoryCalls
     XCTAssertEqual(1, fsCalls.count)
-    XCTAssertEqual("/file.txt", fsCalls[0].path)
+    XCTAssertEqual("/dir1", fsCalls[0].path)
     XCTAssertEqual(false, fsCalls[0].createIntermediates)
+  }
+
+  func testCreateFirstDirectoryWithIntermediates() {
+    // given
+    let fileSystemMock = FileSystemMock()
+    let url = URL(string: "/dir1/dir2/dir3")!
+    let sut = TempuraFileManager(fileSystem: fileSystemMock)
+
+    // when
+    try? sut.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+
+    // then
+    let fsCalls = fileSystemMock.createDirectoryCalls
+    XCTAssertEqual(1, fsCalls.count)
+    XCTAssertEqual("/dir1/dir2/dir3", fsCalls[0].path)
+    XCTAssertEqual(true, fsCalls[0].createIntermediates)
   }
 }
