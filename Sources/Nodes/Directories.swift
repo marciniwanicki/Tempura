@@ -24,6 +24,7 @@ class Directories {
     parentDirectory[inode.filename] = inode.inodeId
 
     self.list[parentInodeId] = parentDirectory
+    self.list[inode.inodeId] = createDirectory(inodeId: inode.inodeId, parentInodeId: parentInodeId)
 
     return .success(value: inode.inodeId)
   }

@@ -41,11 +41,24 @@ class FileSystem {
       return .failure(reason: .invalidPath(path: string))
     }
 
-    let inode = Inode(type: .directory)
-    let result = addInode(inode, path: path)
-    switch result {
-    case .success: return .success(value: string)
-    case let .failure(reason:r): return .failure(reason: r)
+    if createIntermediates {
+      self.createIntermediates(path: path)
+    }
+
+    return createDirectory(path: path)
+  }
+
+  private func createIntermediates(path: Path) {
+    var toCreateStack = [Path]()
+    var currentPath = path.parent()
+    while let unwrappedCurrentPath = currentPath {
+      if !exists(path: unwrappedCurrentPath) {
+        toCreateStack.append(unwrappedCurrentPath)
+      }
+      currentPath = unwrappedCurrentPath.parent()
+    }
+    for currentPath in toCreateStack.reversed() {
+      _ = createDirectory(path: currentPath)
     }
   }
 
@@ -83,6 +96,15 @@ class FileSystem {
     return .success(value: inodeId)
   }
 
+  func createDirectory(path: Path, createIntermediates: Bool = false) -> Result<String> {
+    let inode = Inode(type: .directory)
+    let result = addInode(inode, path: path)
+    switch result {
+    case .success: return .success(value: path.description)
+    case let .failure(reason:r): return .failure(reason: r)
+    }
+  }
+
   private func addInode(_ inode: Inode, path: Path) -> Result<Int> {
     guard !lookupInode(path: path).isSuccess() else {
       return .failure(reason: .pathAlreadyExists)
@@ -98,7 +120,7 @@ class FileSystem {
 
     // add operation cannot fail at that stage
     _ = self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()),
-                             parentInodeId: parentNodeId)
+        parentInodeId: parentNodeId)
 
     self.inodes.add(newInodeId, inode)
 
