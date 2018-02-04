@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum ResultArray<T: Sequence>: Equatable where T.Element: Equatable {
+enum ResultSequence<T: Sequence>: Equatable where T.Element: Equatable {
   case success(value: T)
   case failure(reason: Reason)
 
@@ -22,7 +22,7 @@ enum ResultArray<T: Sequence>: Equatable where T.Element: Equatable {
     }
   }
 
-  static func == (lhs: ResultArray<T>, rhs: ResultArray<T>) -> Bool {
+  static func == (lhs: ResultSequence<T>, rhs: ResultSequence<T>) -> Bool {
     switch (lhs, rhs) {
     case let (.success(value:l), .success(value:r)): return l.elementsEqual(r)
     case let (.failure(reason:l), .failure(reason:r)): return l == r
