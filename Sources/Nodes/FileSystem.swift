@@ -48,6 +48,17 @@ class FileSystem {
     return createDirectory(path: path)
   }
 
+  func contentsOfDirectory(atPath string: String,
+                           includingPropertiesForKeys keys: [URLResourceKey]?,
+                           options mask: Foundation.FileManager.DirectoryEnumerationOptions)
+          -> ResultSequence<[String]> {
+    guard let path = UnixPath(path: string) else {
+      return .failure(reason: .invalidPath(path: string))
+    }
+
+    return ResultSequence.failure(reason: .inodeNotFound)
+  }
+
   private func createIntermediates(path: Path) {
     var toCreateStack = [Path]()
     var currentPath = path.parent()

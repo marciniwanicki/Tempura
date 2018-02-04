@@ -25,14 +25,19 @@
 		516569712015422F00C9303C /* UnixPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516569702015422F00C9303C /* UnixPath.swift */; };
 		5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5189F0B920154477002D725D /* UnixPathTests.swift */; };
 		524E805E1736C7777F077EA3 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8638932C11EF4C2DB5A1 /* ResultTests.swift */; };
+		524E815D9371C1DE5AC6E671 /* ResultSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E817124C042E6EA259059 /* ResultSequence.swift */; };
+		524E82E37B1BAD86F3E14DFA /* FileSystemContentsOfDirectoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */; };
 		524E83600E27330DF9E49E27 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E826B3291FB7D8137CEA1 /* Result.swift */; };
+		524E840A5AEE942F242FF3B6 /* ResultSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E87FF870C84935B39ACDD /* ResultSequenceTests.swift */; };
 		524E89354CF2956DB6590545 /* InodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E81151C9F19BD1448BA36 /* InodeTests.swift */; };
+		524E8C6DFE60B9016D7A6B04 /* FileSystemCreateDirectoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E83C75604B841530175E8 /* FileSystemCreateDirectoryTests.swift */; };
 		524E8C717B175F060E0A3203 /* InodesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8F9E1AD5AE5D0766727F /* InodesTests.swift */; };
 		524E8CB32D13DDFBF00146AB /* FileSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E8BF7818B483CB9237F /* FileSystemMock.swift */; };
+		524E8DE4D8B36D78146A6EBA /* FileSystemLookupInodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E834231E779006226ECAF /* FileSystemLookupInodeTests.swift */; };
 		524E8E52B642EC8453357A98 /* DictionariesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */; };
 		524E8F022A5141FD46164111 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */; };
 		524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8DA15698CCF284CD6E06 /* Reason.swift */; };
-		524E8FBE37D201A2EB7F2E84 /* FileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E80B25384799E6D10450F /* FileSystemTests.swift */; };
+		524E8FBE37D201A2EB7F2E84 /* FileSystemExistsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E80B25384799E6D10450F /* FileSystemExistsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +75,17 @@
 		5165696E20153FD800C9303C /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		516569702015422F00C9303C /* UnixPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPath.swift; sourceTree = "<group>"; };
 		5189F0B920154477002D725D /* UnixPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixPathTests.swift; sourceTree = "<group>"; };
-		524E80B25384799E6D10450F /* FileSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemTests.swift; sourceTree = "<group>"; };
+		524E80B25384799E6D10450F /* FileSystemExistsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemExistsTests.swift; sourceTree = "<group>"; };
 		524E81151C9F19BD1448BA36 /* InodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InodeTests.swift; sourceTree = "<group>"; };
+		524E817124C042E6EA259059 /* ResultSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSequence.swift; sourceTree = "<group>"; };
 		524E826B3291FB7D8137CEA1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		524E834231E779006226ECAF /* FileSystemLookupInodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemLookupInodeTests.swift; sourceTree = "<group>"; };
+		524E83C75604B841530175E8 /* FileSystemCreateDirectoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemCreateDirectoryTests.swift; sourceTree = "<group>"; };
 		524E8638932C11EF4C2DB5A1 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		524E87FF870C84935B39ACDD /* ResultSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSequenceTests.swift; sourceTree = "<group>"; };
 		524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionariesTests.swift; sourceTree = "<group>"; };
 		524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
+		524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemContentsOfDirectoryTests.swift; sourceTree = "<group>"; };
 		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
 		524E8E8BF7818B483CB9237F /* FileSystemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemMock.swift; sourceTree = "<group>"; };
 		524E8F9E1AD5AE5D0766727F /* InodesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InodesTests.swift; sourceTree = "<group>"; };
@@ -177,6 +187,7 @@
 				51656960201505EB00C9303C /* Directories.swift */,
 				524E826B3291FB7D8137CEA1 /* Result.swift */,
 				524E8DA15698CCF284CD6E06 /* Reason.swift */,
+				524E817124C042E6EA259059 /* ResultSequence.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -196,9 +207,13 @@
 				5189F0B820154463002D725D /* Path */,
 				524E81151C9F19BD1448BA36 /* InodeTests.swift */,
 				524E8638932C11EF4C2DB5A1 /* ResultTests.swift */,
-				524E80B25384799E6D10450F /* FileSystemTests.swift */,
+				524E80B25384799E6D10450F /* FileSystemExistsTests.swift */,
 				524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */,
 				524E8F9E1AD5AE5D0766727F /* InodesTests.swift */,
+				524E87FF870C84935B39ACDD /* ResultSequenceTests.swift */,
+				524E834231E779006226ECAF /* FileSystemLookupInodeTests.swift */,
+				524E83C75604B841530175E8 /* FileSystemCreateDirectoryTests.swift */,
+				524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -362,6 +377,7 @@
 				51656963201505EB00C9303C /* TempuraFileManager.swift in Sources */,
 				524E83600E27330DF9E49E27 /* Result.swift in Sources */,
 				524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */,
+				524E815D9371C1DE5AC6E671 /* ResultSequence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,11 +388,15 @@
 				5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */,
 				524E89354CF2956DB6590545 /* InodeTests.swift in Sources */,
 				524E805E1736C7777F077EA3 /* ResultTests.swift in Sources */,
-				524E8FBE37D201A2EB7F2E84 /* FileSystemTests.swift in Sources */,
+				524E8FBE37D201A2EB7F2E84 /* FileSystemExistsTests.swift in Sources */,
 				524E8E52B642EC8453357A98 /* DictionariesTests.swift in Sources */,
 				524E8C717B175F060E0A3203 /* InodesTests.swift in Sources */,
 				524E8F022A5141FD46164111 /* TempuraFileManagerTests.swift in Sources */,
 				524E8CB32D13DDFBF00146AB /* FileSystemMock.swift in Sources */,
+				524E840A5AEE942F242FF3B6 /* ResultSequenceTests.swift in Sources */,
+				524E8DE4D8B36D78146A6EBA /* FileSystemLookupInodeTests.swift in Sources */,
+				524E8C6DFE60B9016D7A6B04 /* FileSystemCreateDirectoryTests.swift in Sources */,
+				524E82E37B1BAD86F3E14DFA /* FileSystemContentsOfDirectoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
