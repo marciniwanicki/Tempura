@@ -56,7 +56,50 @@ class FileSystem {
       return .failure(reason: .invalidPath(path: string))
     }
 
-    return ResultSequence.failure(reason: .inodeNotFound)
+    let rootList = self.directories.list(inodeId: FileSystem.rootInodeId)!
+    let list = path
+        .components()
+        .dropFirst()
+        .reduce(rootList) { [unowned self] (inodeIdArray: [String: Int], component: String) in
+          guard let guardInodeId = inodeIdArray["."],
+                let guardNextList = self.directories.list(inodeId: guardInodeId),
+                let guardNextInodeId = guardNextList[component] else {
+            return [:]
+          }
+          return self.directories.list(inodeId: guardNextInodeId) ?? [:]
+        }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
+          var mutableResult = result
+          guard let inode = self.inodes.inode(by: tuple.value).value() else {
+            return mutableResult
+          }
+
+          mutableResult[tuple.key] = inode
+          return mutableResult
+        }
+
+    guard !list.isEmpty else {
+      return .failure(reason: .inodeNotFound)
+    }
+
+    let inode = list["."]!
+
+    guard inode.type == .directory else {
+      return .failure(reason: .notADirectory)
+    }
+
+    let result = list.map { (key, _) in
+          key
+        }
+        .filter {
+          $0 != "." && $0 != ".."
+        }
+        .flatMap {
+          let pathString = path.description + "/" + $0
+          return UnixPath(path: pathString)?.description
+        }
+        .sorted()
+
+    return ResultSequence.success(value: result)
   }
 
   private func createIntermediates(path: Path) {

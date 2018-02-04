@@ -8,6 +8,7 @@ enum Reason {
   case invalidPath(path: String)
   case pathAlreadyExists
   case inodeNotFound
+  case notADirectory
 }
 
 extension Reason: Equatable {
@@ -17,6 +18,7 @@ extension Reason: Equatable {
     case let (.invalidPath(path:l), .invalidPath(path:r)): return l == r
     case (.pathAlreadyExists, .pathAlreadyExists): return true
     case (.inodeNotFound, .inodeNotFound): return true
+    case (.notADirectory, .notADirectory): return true
     default: return false
     }
   }

@@ -11,7 +11,7 @@ class Inode {
     case file
   }
 
-  private let type: InodeType
+  let type: InodeType
 
   init(type: InodeType) {
     self.type = type
