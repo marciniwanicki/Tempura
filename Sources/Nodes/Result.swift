@@ -8,6 +8,14 @@ enum Result<T: Equatable>: Equatable {
   case success(value: T)
   case failure(reason: Reason)
 
+  init(_ value: T?, _ reason: Reason) {
+    if let value = value {
+      self = .success(value: value)
+    } else {
+      self = .failure(reason: reason)
+    }
+  }
+
   func isSuccess() -> Bool {
     switch self {
     case .success(value: _): return true

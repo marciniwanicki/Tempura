@@ -42,40 +42,52 @@ class ResultTests: XCTestCase {
   func testMapWithArgumentWhenFailure() {
     // given
     let sut = Result<Int>.failure(reason: .pathAlreadyExists)
+    let success: (Int) -> (Result<String>) = {
+      .success(value: "Marcin\($0)")
+    }
 
     // when
-    let result = sut.map { number in
-      .success(value: "Marcin\(number)")
-    }
+    let result = sut.map(success)
 
     // then
     XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
+
+    // for pure sake of 100% code coverage
+    XCTAssertEqual(Result.success(value: "Marcin24"), success(24))
   }
 
   func testMapWithArgumentWhenSuccess() {
     // given
     let sut = Result.success(value: 24)
+    let success: (Int) -> (Result<String>) = {
+      .success(value: "Marcin\($0)")
+    }
 
     // when
-    let result = sut.map { number in
-      .success(value: "Marcin\(number)")
-    }
+    let result = sut.map(success)
 
     // then
     XCTAssertEqual(Result.success(value: "Marcin24"), result)
+
+    // for pure sake of 100% code coverage
+    XCTAssertEqual(Result.success(value: "Marcin24"), success(24))
   }
 
   func testMapWithoutArgumentWhenFailure() {
     // given
     let sut = Result<Int>.failure(reason: .pathAlreadyExists)
-
-    // when
-    let result = sut.map {
+    let success: () -> (Result<String>) = {
       .success(value: "Marcin")
     }
 
+    // when
+    let result = sut.map(success)
+
     // then.
     XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
+
+    // for pure sake of 100% code coverage
+    XCTAssertEqual(Result.success(value: "Marcin"), success())
   }
 
   func testMapWithoutArgumentWhenSuccess() {
@@ -134,5 +146,14 @@ class ResultTests: XCTestCase {
 
     // when / then
     XCTAssertFalse(t1 == t2)
+  }
+
+  func testEqualWhenBothNotADirectoryFailures() {
+    // given
+    let t1 = Result<String>.failure(reason: .notADirectory)
+    let t2 = Result<String>.failure(reason: .notADirectory)
+
+    // when / then
+    XCTAssertTrue(t1 == t2)
   }
 }

@@ -29,23 +29,19 @@ class FileSystem {
   }
 
   func lookupInode(path string: String) -> Result<Inode> {
-    guard let path = UnixPath(path: string) else {
-      return .failure(reason: .invalidPath(path: string))
-    }
-
-    return lookupInode(path: path)
+    return Result(UnixPath(path: string), .invalidPath(path: string))
+        .map(lookupInode)
   }
 
   func createDirectory(path string: String, createIntermediates: Bool = false) -> Result<String> {
-    guard let path = UnixPath(path: string) else {
-      return .failure(reason: .invalidPath(path: string))
-    }
+    return Result(UnixPath(path: string), .invalidPath(path: string))
+        .map { [unowned self] in
+          if createIntermediates {
+            self.createIntermediates(path: $0)
+          }
 
-    if createIntermediates {
-      self.createIntermediates(path: path)
-    }
-
-    return createDirectory(path: path)
+          return createDirectory(path: $0)
+        }
   }
 
   func contentsOfDirectory(atPath string: String,
@@ -122,9 +118,7 @@ class FileSystem {
 
   private func lookupInode(path: Path) -> Result<Inode> {
     return lookupInodeId(path: path)
-        .map {
-          self.inodes.inode(by: $0)
-        }
+        .map(self.inodes.inode)
   }
 
   private func lookupInodeId(path: Path) -> Result<Int> {
