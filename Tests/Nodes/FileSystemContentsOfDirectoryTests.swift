@@ -47,4 +47,18 @@ class FileSystemContentsOfDirectoryTests: XCTestCase {
     // then
     XCTAssertEqual(ResultSequence.success(value: ["/A", "/B"]), result)
   }
+
+  func testContentsOfDirectoryWhenSubdirectoryDoesNotExist() {
+    // given
+    let sut = FileSystem()
+    _ = sut.createDirectory(path: "/A")
+
+    // when
+    let result = sut.contentsOfDirectory(atPath: "/A/B",
+        includingPropertiesForKeys: nil,
+        options: Foundation.FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+
+    // then
+    XCTAssertEqual(ResultSequence.failure(reason: .inodeNotFound), result)
+  }
 }

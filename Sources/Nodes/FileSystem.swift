@@ -59,17 +59,14 @@ class FileSystem {
         .reduce(rootList) { [unowned self] (inodeIdArray: [String: Int], component: String) in
           guard let guardInodeId = inodeIdArray["."],
                 let guardNextList = self.directories.list(inodeId: guardInodeId),
-                let guardNextInodeId = guardNextList[component] else {
+                let guardNextInodeId = guardNextList[component],
+                let list = self.directories.list(inodeId: guardNextInodeId) else {
             return [:]
           }
-          return self.directories.list(inodeId: guardNextInodeId) ?? [:]
+          return list
         }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
-          var mutableResult = result
-          guard let inode = self.inodes.inode(by: tuple.value).value() else {
-            return mutableResult
-          }
-
-          mutableResult[tuple.key] = inode
+          var mutableResult = resultg
+          mutableResult[tuple.key] = self.inodes.inode(by: tuple.value).value()!
           return mutableResult
         }
 
