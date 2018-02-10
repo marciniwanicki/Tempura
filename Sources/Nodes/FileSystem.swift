@@ -28,13 +28,13 @@ class FileSystem {
     return exists(path: path)
   }
 
-  func lookupInode(path string: String) -> Result<Inode> {
-    return Result(UnixPath(path: string), .invalidPath(path: string))
+  func lookupInode(path string: String) -> ResultValue<Inode> {
+    return ResultValue(UnixPath(path: string), .invalidPath(path: string))
         .map(lookupInode)
   }
 
-  func createDirectory(path string: String, createIntermediates: Bool = false) -> Result<String> {
-    return Result(UnixPath(path: string), .invalidPath(path: string))
+  func createDirectory(path string: String, createIntermediates: Bool = false) -> ResultValue<String> {
+    return ResultValue(UnixPath(path: string), .invalidPath(path: string))
         .map { [unowned self] in
           if createIntermediates {
             self.createIntermediates(path: $0)
@@ -113,12 +113,12 @@ class FileSystem {
     return lookupInode(path: path).isSuccess()
   }
 
-  private func lookupInode(path: Path) -> Result<Inode> {
+  private func lookupInode(path: Path) -> ResultValue<Inode> {
     return lookupInodeId(path: path)
         .map(self.inodes.inode)
   }
 
-  private func lookupInodeId(path: Path) -> Result<Int> {
+  private func lookupInodeId(path: Path) -> ResultValue<Int> {
     if path.parent() == nil {
       return .success(value: FileSystem.rootInodeId)
     }
@@ -140,14 +140,14 @@ class FileSystem {
     return .success(value: inodeId)
   }
 
-  func createDirectory(path: Path, createIntermediates: Bool = false) -> Result<String> {
+  func createDirectory(path: Path, createIntermediates: Bool = false) -> ResultValue<String> {
     return addInode(.directory, path: path)
         .map {
           .success(value: path.description)
         }
   }
 
-  private func addInode(_ inode: Inode, path: Path) -> Result<Int> {
+  private func addInode(_ inode: Inode, path: Path) -> ResultValue<Int> {
     guard !lookupInode(path: path).isSuccess() else {
       return .failure(reason: .pathAlreadyExists)
     }

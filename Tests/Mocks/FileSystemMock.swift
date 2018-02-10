@@ -11,8 +11,8 @@ class FileSystemMock: FileSystem {
 
   private(set) var createDirectoryCalls = [CreateDirectoryParameters]()
 
-  override func createDirectory(path string: String, createIntermediates: Bool = false) -> Result<String> {
+  override func createDirectory(path string: String, createIntermediates: Bool = false) -> ResultValue<String> {
     self.createDirectoryCalls.append((path: string, createIntermediates: createIntermediates))
-    return Result.success(value: string)
+    return ResultValue.success(value: string)
   }
 }

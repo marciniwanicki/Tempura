@@ -24,7 +24,7 @@ class DictionariesTests: XCTestCase {
     let result = sut.add(inode: (2, "filename"), parentInodeId: 1)
 
     // then
-    XCTAssertEqual(Result.success(value: 2), result)
+    XCTAssertEqual(ResultValue.success(value: 2), result)
     XCTAssertEqual([".": 1, "..": 1, "filename": 2], sut.list(inodeId: 1)!)
   }
 
@@ -36,6 +36,6 @@ class DictionariesTests: XCTestCase {
     let result = sut.add(inode: (2, "filename"), parentInodeId: 3)
 
     // then
-    XCTAssertEqual(Result.failure(reason: .inodeNotFound), result)
+    XCTAssertEqual(ResultValue.failure(reason: .inodeNotFound), result)
   }
 }

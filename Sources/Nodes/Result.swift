@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Result<T: Equatable>: Equatable {
+enum ResultValue<T: Equatable>: Equatable {
   case success(value: T)
   case failure(reason: Reason)
 
@@ -30,21 +30,21 @@ enum Result<T: Equatable>: Equatable {
     }
   }
 
-  func map<U>(_ closure: () -> Result<U>) -> Result<U> {
+  func map<U>(_ closure: () -> ResultValue<U>) -> ResultValue<U> {
     switch self {
-    case let .failure(reason:r): return Result<U>.failure(reason: r)
+    case let .failure(reason:r): return ResultValue<U>.failure(reason: r)
     case .success: return closure()
     }
   }
 
-  func map<U>(_ closure: (T) -> Result<U>) -> Result<U> {
+  func map<U>(_ closure: (T) -> ResultValue<U>) -> ResultValue<U> {
     switch self {
-    case let .failure(reason:r): return Result<U>.failure(reason: r)
+    case let .failure(reason:r): return ResultValue<U>.failure(reason: r)
     case let .success(value:t): return closure(t)
     }
   }
 
-  static func == (lhs: Result<T>, rhs: Result<T>) -> Bool {
+  static func == (lhs: ResultValue<T>, rhs: ResultValue<T>) -> Bool {
     switch (lhs, rhs) {
     case let (.success(value:l), .success(value:r)): return l == r
     case let (.failure(reason:l), .failure(reason:r)): return l == r

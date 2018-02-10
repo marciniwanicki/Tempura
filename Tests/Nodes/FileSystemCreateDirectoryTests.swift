@@ -12,7 +12,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     let sut = Tempura.FileSystem()
 
     // when / then
-    XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
+    XCTAssertEqual(ResultValue.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
   }
 
   func testCreateDirectoryInvalidPath() {
@@ -20,7 +20,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     let sut = Tempura.FileSystem()
 
     // when / then
-    XCTAssertEqual(Result.failure(reason: .invalidPath(path: "invalidPath/file.txt")),
+    XCTAssertEqual(ResultValue.failure(reason: .invalidPath(path: "invalidPath/file.txt")),
         sut.createDirectory(path: "invalidPath/file.txt"))
   }
 
@@ -29,7 +29,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     let sut = Tempura.FileSystem()
 
     // when / then
-    XCTAssertEqual(Result.success(value: "/testme"), sut.createDirectory(path: "/testme"))
+    XCTAssertEqual(ResultValue.success(value: "/testme"), sut.createDirectory(path: "/testme"))
   }
 
   func testCreateDirectoryValidPathWithIntermediates() {
@@ -37,7 +37,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     let sut = Tempura.FileSystem()
 
     // when / then
-    XCTAssertEqual(Result.success(value: "/testme/testme2/testme3"),
+    XCTAssertEqual(ResultValue.success(value: "/testme/testme2/testme3"),
         sut.createDirectory(path: "/testme/testme2/testme3", createIntermediates: true))
   }
 
@@ -47,7 +47,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     _ = sut.createDirectory(path: "/testme")
 
     // when / then
-    XCTAssertEqual(Result.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))
+    XCTAssertEqual(ResultValue.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))
   }
 
   func testCreateDirectoryParentPathDoesExist() {
@@ -55,6 +55,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
     let sut = Tempura.FileSystem()
 
     // when / then
-    XCTAssertEqual(Result.failure(reason: .invalidPath(path: "/test")), sut.createDirectory(path: "/test/test.txt"))
+    XCTAssertEqual(ResultValue.failure(reason: .invalidPath(path: "/test")),
+        sut.createDirectory(path: "/test/test.txt"))
   }
 }

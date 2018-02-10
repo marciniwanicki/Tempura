@@ -5,11 +5,11 @@
 import XCTest
 @testable import Tempura
 
-class ResultTests: XCTestCase {
+class ResultValueTests: XCTestCase {
 
   func testIsSuccessWithSuccess() {
     // given
-    let sut = Result.success(value: "testme")
+    let sut = ResultValue.success(value: "testme")
 
     // when / then
     XCTAssertTrue(sut.isSuccess())
@@ -17,7 +17,7 @@ class ResultTests: XCTestCase {
 
   func testIsSuccessWithFailure() {
     // given
-    let sut = Result<String>.failure(reason: .inodeNotFound)
+    let sut = ResultValue<String>.failure(reason: .inodeNotFound)
 
     // when / then
     XCTAssertFalse(sut.isSuccess())
@@ -25,7 +25,7 @@ class ResultTests: XCTestCase {
 
   func testValueWhenSuccess() {
     // given
-    let sut = Result.success(value: "testme")
+    let sut = ResultValue.success(value: "testme")
 
     // when / then
     XCTAssertEqual("testme", sut.value())
@@ -33,7 +33,7 @@ class ResultTests: XCTestCase {
 
   func testValueWhenFailure() {
     // given
-    let sut = Result<String>.failure(reason: .pathAlreadyExists)
+    let sut = ResultValue<String>.failure(reason: .pathAlreadyExists)
 
     // when / then
     XCTAssertNil(sut.value())
@@ -41,8 +41,8 @@ class ResultTests: XCTestCase {
 
   func testMapWithArgumentWhenFailure() {
     // given
-    let sut = Result<Int>.failure(reason: .pathAlreadyExists)
-    let success: (Int) -> (Result<String>) = {
+    let sut = ResultValue<Int>.failure(reason: .pathAlreadyExists)
+    let success: (Int) -> (ResultValue<String>) = {
       .success(value: "Marcin\($0)")
     }
 
@@ -50,16 +50,16 @@ class ResultTests: XCTestCase {
     let result = sut.map(success)
 
     // then
-    XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
+    XCTAssertEqual(ResultValue<String>.failure(reason: .pathAlreadyExists), result)
 
     // for pure sake of 100% code coverage
-    XCTAssertEqual(Result.success(value: "Marcin24"), success(24))
+    XCTAssertEqual(ResultValue.success(value: "Marcin24"), success(24))
   }
 
   func testMapWithArgumentWhenSuccess() {
     // given
-    let sut = Result.success(value: 24)
-    let success: (Int) -> (Result<String>) = {
+    let sut = ResultValue.success(value: 24)
+    let success: (Int) -> (ResultValue<String>) = {
       .success(value: "Marcin\($0)")
     }
 
@@ -67,16 +67,16 @@ class ResultTests: XCTestCase {
     let result = sut.map(success)
 
     // then
-    XCTAssertEqual(Result.success(value: "Marcin24"), result)
+    XCTAssertEqual(ResultValue.success(value: "Marcin24"), result)
 
     // for pure sake of 100% code coverage
-    XCTAssertEqual(Result.success(value: "Marcin24"), success(24))
+    XCTAssertEqual(ResultValue.success(value: "Marcin24"), success(24))
   }
 
   func testMapWithoutArgumentWhenFailure() {
     // given
-    let sut = Result<Int>.failure(reason: .pathAlreadyExists)
-    let success: () -> (Result<String>) = {
+    let sut = ResultValue<Int>.failure(reason: .pathAlreadyExists)
+    let success: () -> (ResultValue<String>) = {
       .success(value: "Marcin")
     }
 
@@ -84,15 +84,15 @@ class ResultTests: XCTestCase {
     let result = sut.map(success)
 
     // then.
-    XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
+    XCTAssertEqual(ResultValue<String>.failure(reason: .pathAlreadyExists), result)
 
     // for pure sake of 100% code coverage
-    XCTAssertEqual(Result.success(value: "Marcin"), success())
+    XCTAssertEqual(ResultValue.success(value: "Marcin"), success())
   }
 
   func testMapWithoutArgumentWhenSuccess() {
     // given
-    let sut = Result.success(value: 24)
+    let sut = ResultValue.success(value: 24)
 
     // when
     let result = sut.map {
@@ -100,13 +100,13 @@ class ResultTests: XCTestCase {
     }
 
     // then
-    XCTAssertEqual(Result.success(value: "Marcin"), result)
+    XCTAssertEqual(ResultValue.success(value: "Marcin"), result)
   }
 
   func testEqualWhenTheSameSuccess() {
     // given
-    let t1 = Result<String>.success(value: "A")
-    let t2 = Result<String>.success(value: "A")
+    let t1 = ResultValue<String>.success(value: "A")
+    let t2 = ResultValue<String>.success(value: "A")
 
     // when / then
     XCTAssertTrue(t1 == t2)
@@ -114,8 +114,8 @@ class ResultTests: XCTestCase {
 
   func testEqualWhenDifferentSuccess() {
     // given
-    let t1 = Result<String>.success(value: "A")
-    let t2 = Result<String>.success(value: "B")
+    let t1 = ResultValue<String>.success(value: "A")
+    let t2 = ResultValue<String>.success(value: "B")
 
     // when / then
     XCTAssertFalse(t1 == t2)
@@ -123,8 +123,8 @@ class ResultTests: XCTestCase {
 
   func testEqualWhenFailureAndSuccess() {
     // given
-    let t1 = Result<String>.success(value: "A")
-    let t2 = Result<String>.failure(reason: .pathAlreadyExists)
+    let t1 = ResultValue<String>.success(value: "A")
+    let t2 = ResultValue<String>.failure(reason: .pathAlreadyExists)
 
     // when / then
     XCTAssertFalse(t1 == t2)
@@ -132,8 +132,8 @@ class ResultTests: XCTestCase {
 
   func testEqualWhenTheSameFailures() {
     // given
-    let t1 = Result<String>.failure(reason: .pathAlreadyExists)
-    let t2 = Result<String>.failure(reason: .pathAlreadyExists)
+    let t1 = ResultValue<String>.failure(reason: .pathAlreadyExists)
+    let t2 = ResultValue<String>.failure(reason: .pathAlreadyExists)
 
     // when / then
     XCTAssertTrue(t1 == t2)
@@ -141,8 +141,8 @@ class ResultTests: XCTestCase {
 
   func testEqualWhenDifferentFailures() {
     // given
-    let t1 = Result<String>.failure(reason: .pathAlreadyExists)
-    let t2 = Result<String>.failure(reason: .inodeNotFound)
+    let t1 = ResultValue<String>.failure(reason: .pathAlreadyExists)
+    let t2 = ResultValue<String>.failure(reason: .inodeNotFound)
 
     // when / then
     XCTAssertFalse(t1 == t2)
@@ -150,8 +150,8 @@ class ResultTests: XCTestCase {
 
   func testEqualWhenBothNotADirectoryFailures() {
     // given
-    let t1 = Result<String>.failure(reason: .notADirectory)
-    let t2 = Result<String>.failure(reason: .notADirectory)
+    let t1 = ResultValue<String>.failure(reason: .notADirectory)
+    let t2 = ResultValue<String>.failure(reason: .notADirectory)
 
     // when / then
     XCTAssertTrue(t1 == t2)
