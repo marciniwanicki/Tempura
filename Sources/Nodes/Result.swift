@@ -22,6 +22,13 @@ enum Result<T: Equatable>: Equatable {
     }
   }
 
+  func map<U>(_ closure: (T) -> Result<U>) -> Result<U> {
+    switch self {
+    case let .failure(reason:r): return Result<U>.failure(reason: r)
+    case let .success(value:t): return closure(t)
+    }
+  }
+
   static func == (lhs: Result<T>, rhs: Result<T>) -> Bool {
     switch (lhs, rhs) {
     case let (.success(value:l), .success(value:r)): return l == r

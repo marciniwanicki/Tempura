@@ -121,11 +121,10 @@ class FileSystem {
   }
 
   private func lookupInode(path: Path) -> Result<Inode> {
-    let result = lookupInodeId(path: path)
-    switch result {
-    case let .failure(reason:r): return .failure(reason: r)
-    case let .success(value:v): return self.inodes.inode(by: v)
-    }
+    return lookupInodeId(path: path)
+        .map {
+          self.inodes.inode(by: $0)
+        }
   }
 
   private func lookupInodeId(path: Path) -> Result<Int> {
