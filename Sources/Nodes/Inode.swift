@@ -6,6 +6,8 @@ import Foundation
 
 class Inode {
 
+  static let directory = Inode(type: .directory)
+
   enum InodeType {
     case directory
     case file

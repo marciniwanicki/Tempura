@@ -39,25 +39,51 @@ class ResultTests: XCTestCase {
     XCTAssertNil(sut.value())
   }
 
-  func testMapWhenFailure() {
+  func testMapWithArgumentWhenFailure() {
     // given
     let sut = Result<Int>.failure(reason: .pathAlreadyExists)
 
     // when
-    let result = sut.map { _ in
-      .success(value: "Marcin")
+    let result = sut.map { number in
+      .success(value: "Marcin\(number)")
     }
 
     // then
     XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
   }
 
-  func testMapWhenSuccess() {
+  func testMapWithArgumentWhenSuccess() {
     // given
     let sut = Result.success(value: 24)
 
     // when
-    let result = sut.map { _ in
+    let result = sut.map { number in
+      .success(value: "Marcin\(number)")
+    }
+
+    // then
+    XCTAssertEqual(Result.success(value: "Marcin24"), result)
+  }
+
+  func testMapWithoutArgumentWhenFailure() {
+    // given
+    let sut = Result<Int>.failure(reason: .pathAlreadyExists)
+
+    // when
+    let result = sut.map {
+      .success(value: "Marcin")
+    }
+
+    // then.
+    XCTAssertEqual(Result<String>.failure(reason: .pathAlreadyExists), result)
+  }
+
+  func testMapWithoutArgumentWhenSuccess() {
+    // given
+    let sut = Result.success(value: 24)
+
+    // when
+    let result = sut.map {
       .success(value: "Marcin")
     }
 

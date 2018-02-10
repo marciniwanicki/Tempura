@@ -150,12 +150,10 @@ class FileSystem {
   }
 
   func createDirectory(path: Path, createIntermediates: Bool = false) -> Result<String> {
-    let inode = Inode(type: .directory)
-    let result = addInode(inode, path: path)
-    switch result {
-    case .success: return .success(value: path.description)
-    case let .failure(reason:r): return .failure(reason: r)
-    }
+    return addInode(.directory, path: path)
+        .map {
+          .success(value: path.description)
+        }
   }
 
   private func addInode(_ inode: Inode, path: Path) -> Result<Int> {
