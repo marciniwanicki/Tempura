@@ -65,7 +65,7 @@ class FileSystem {
           }
           return list
         }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
-          var mutableResult = resultg
+          var mutableResult = result
           mutableResult[tuple.key] = self.inodes.inode(by: tuple.value).value()!
           return mutableResult
         }
