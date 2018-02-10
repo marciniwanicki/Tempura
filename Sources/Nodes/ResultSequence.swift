@@ -10,7 +10,7 @@ enum ResultSequence<T: Sequence>: Equatable where T.Element: Equatable {
 
   func isSuccess() -> Bool {
     switch self {
-    case .success(value: _): return true
+    case .success: return true
     default: return false
     }
   }

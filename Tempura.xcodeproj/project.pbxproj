@@ -24,9 +24,11 @@
 		5165696F20153FD800C9303C /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5165696E20153FD800C9303C /* Path.swift */; };
 		516569712015422F00C9303C /* UnixPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516569702015422F00C9303C /* UnixPath.swift */; };
 		5189F0BA20154477002D725D /* UnixPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5189F0B920154477002D725D /* UnixPathTests.swift */; };
+		524E804ED401C3ADDABFB7EC /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8B84940F3469FB59B929 /* ResultTests.swift */; };
 		524E805E1736C7777F077EA3 /* ResultValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8638932C11EF4C2DB5A1 /* ResultValueTests.swift */; };
 		524E815D9371C1DE5AC6E671 /* ResultSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E817124C042E6EA259059 /* ResultSequence.swift */; };
 		524E82E37B1BAD86F3E14DFA /* FileSystemContentsOfDirectoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */; };
+		524E83028E7C8BA7141878DC /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8D84E7F1F63302A8AF10 /* Result.swift */; };
 		524E83600E27330DF9E49E27 /* ResultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E826B3291FB7D8137CEA1 /* ResultValue.swift */; };
 		524E840A5AEE942F242FF3B6 /* ResultSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E87FF870C84935B39ACDD /* ResultSequenceTests.swift */; };
 		524E89354CF2956DB6590545 /* InodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E81151C9F19BD1448BA36 /* InodeTests.swift */; };
@@ -86,6 +88,8 @@
 		524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionariesTests.swift; sourceTree = "<group>"; };
 		524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
 		524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemContentsOfDirectoryTests.swift; sourceTree = "<group>"; };
+		524E8B84940F3469FB59B929 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		524E8D84E7F1F63302A8AF10 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
 		524E8E8BF7818B483CB9237F /* FileSystemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemMock.swift; sourceTree = "<group>"; };
 		524E8F9E1AD5AE5D0766727F /* InodesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InodesTests.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				524E826B3291FB7D8137CEA1 /* ResultValue.swift */,
 				524E8DA15698CCF284CD6E06 /* Reason.swift */,
 				524E817124C042E6EA259059 /* ResultSequence.swift */,
+				524E8D84E7F1F63302A8AF10 /* Result.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				524E834231E779006226ECAF /* FileSystemLookupInodeTests.swift */,
 				524E83C75604B841530175E8 /* FileSystemCreateDirectoryTests.swift */,
 				524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */,
+				524E8B84940F3469FB59B929 /* ResultTests.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				524E83600E27330DF9E49E27 /* ResultValue.swift in Sources */,
 				524E8FADF2BE7162E784EF27 /* Reason.swift in Sources */,
 				524E815D9371C1DE5AC6E671 /* ResultSequence.swift in Sources */,
+				524E83028E7C8BA7141878DC /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +404,7 @@
 				524E8DE4D8B36D78146A6EBA /* FileSystemLookupInodeTests.swift in Sources */,
 				524E8C6DFE60B9016D7A6B04 /* FileSystemCreateDirectoryTests.swift in Sources */,
 				524E82E37B1BAD86F3E14DFA /* FileSystemContentsOfDirectoryTests.swift in Sources */,
+				524E804ED401C3ADDABFB7EC /* ResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
