@@ -71,11 +71,15 @@ class FileSystem {
       return .failure(reason: .invalidPath(path: string))
     }
 
-    // do some travers ...
-
-//    let inode = self.directories.
-
-    return .success
+    let candidate = Inode(type: .file)
+    switch addInode(candidate, path: path) {
+    case let (.failure(reason:r)): return .failure(reason: r)
+    case let (.success(value:inodeId)):
+      if let data = data {
+        self.files.saveData(inodeId: inodeId, data: data)
+      }
+      return .success
+    }
   }
 
   func contentsOfDirectory(atPath string: String,
