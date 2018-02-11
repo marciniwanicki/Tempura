@@ -71,13 +71,13 @@ class FileSystemLookupInodeTests: XCTestCase {
 
     // when / then
     XCTAssertEqual(ResultValue.success(value: "/testme/testme2/testme3"),
-        sut.createDirectory(path: "/testme/testme2/testme3", createIntermediates: true))
+        sut.createDirectory(path: "/testme/testme2/testme3", withIntermediateDirectories: true))
   }
 
   func testCreateDirectoryPathAlreadyExistsAndNoSubdirectory() {
     // given
     let sut = Tempura.FileSystem()
-    _ = sut.createDirectory(path: "/testme")
+    sut.createDirectory(path: "/testme")
 
     // when / then
     XCTAssertEqual(ResultValue.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))

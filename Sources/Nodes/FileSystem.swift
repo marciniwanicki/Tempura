@@ -44,14 +44,16 @@ class FileSystem {
   }
 
   @discardableResult
-  func createDirectory(path string: String, createIntermediates: Bool = false) -> ResultValue<String> {
+  func createDirectory(path string: String,
+                       withIntermediateDirectories intermediateDirectories: Bool = false,
+                       attributes: [FileAttributeKey: Any]? = nil) -> ResultValue<String> {
     return ResultValue(UnixPath(path: string), .invalidPath(path: string))
         .map { [unowned self] in
-          if createIntermediates {
-            self.createIntermediates(path: $0)
+          if intermediateDirectories {
+            self.createIntermediates(path: $0, attributes: attributes)
           }
 
-          return createDirectory(path: $0)
+          return createDirectory(path: $0, attributes: attributes)
         }
   }
 
@@ -71,7 +73,7 @@ class FileSystem {
       return .failure(reason: .invalidPath(path: string))
     }
 
-    let candidate = Inode(type: .file)
+    let candidate = Inode(type: .file, attributes: attr)
     switch addInode(candidate, path: path) {
     case let (.failure(reason:r)): return .failure(reason: r)
     case let (.success(value:inodeId)):
@@ -113,7 +115,7 @@ class FileSystem {
     return ResultSequence.success(value: result)
   }
 
-  private func createIntermediates(path: Path) {
+  private func createIntermediates(path: Path, attributes: [FileAttributeKey: Any]?) {
     var toCreateStack = [Path]()
     var currentPath = path.parent()
     while let unwrappedCurrentPath = currentPath {
@@ -123,7 +125,7 @@ class FileSystem {
       currentPath = unwrappedCurrentPath.parent()
     }
     for currentPath in toCreateStack.reversed() {
-      createDirectory(path: currentPath)
+      createDirectory(path: currentPath, attributes: attributes)
     }
   }
 
@@ -185,8 +187,9 @@ class FileSystem {
   }
 
   @discardableResult
-  private func createDirectory(path: Path, createIntermediates: Bool = false) -> ResultValue<String> {
-    return addInode(.directory, path: path)
+  private func createDirectory(path: Path, attributes: [FileAttributeKey: Any]?) -> ResultValue<String> {
+    let inode = Inode(type: .directory, attributes: attributes)
+    return addInode(inode, path: path)
         .map {
           .success(value: path.description)
         }

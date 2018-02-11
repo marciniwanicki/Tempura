@@ -32,7 +32,7 @@ class FileSystemCreateDirectoryTests: XCTestCase {
   func testCreateDirectoryValidPathWithIntermediates() {
     // when / then
     XCTAssertEqual(ResultValue.success(value: "/testme/testme2/testme3"),
-        sut.createDirectory(path: "/testme/testme2/testme3", createIntermediates: true))
+        sut.createDirectory(path: "/testme/testme2/testme3", withIntermediateDirectories: true))
   }
 
   func testCreateDirectoryPathAlreadyExistsAndNoSubdirectory() {

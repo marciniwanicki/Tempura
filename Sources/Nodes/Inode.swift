@@ -6,17 +6,17 @@ import Foundation
 
 class Inode {
 
-  static let directory = Inode(type: .directory)
-
   enum InodeType {
     case directory
     case file
   }
 
   let type: InodeType
+  let attributes: [FileAttributeKey: Any]?
 
-  init(type: InodeType) {
+  init(type: InodeType, attributes: [FileAttributeKey: Any]? = nil) {
     self.type = type
+    self.attributes = attributes
   }
 }
 

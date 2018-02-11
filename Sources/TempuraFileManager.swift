@@ -18,8 +18,11 @@ class TempuraFileManager: FileManager {
   func createDirectory(at url: URL,
                        withIntermediateDirectories createIntermediates: Bool,
                        attributes: [FileAttributeKey: Any]?) throws {
-    _ = self.fileSystem.createDirectory(path: url.path, createIntermediates: createIntermediates)
+    self.fileSystem.createDirectory(path: url.path,
+        withIntermediateDirectories: createIntermediates,
+        attributes: attributes)
   }
+
 //
 //  func contentsOfDirectory(at url: URL,
 //                           includingPropertiesForKeys keys: [URLResourceKey]?,

@@ -7,12 +7,14 @@ import Foundation
 
 class FileSystemMock: FileSystem {
 
-  typealias CreateDirectoryParameters = (path: String, createIntermediates: Bool)
+  typealias CreateDirectoryParameters = (path: String, intermediateDirectories: Bool)
 
   private(set) var createDirectoryCalls = [CreateDirectoryParameters]()
 
-  override func createDirectory(path string: String, createIntermediates: Bool = false) -> ResultValue<String> {
-    self.createDirectoryCalls.append((path: string, createIntermediates: createIntermediates))
-    return ResultValue.success(value: string)
+  override func createDirectory(path string: String,
+                                withIntermediateDirectories intermediateDirectories: Bool = false,
+                                attributes: [FileAttributeKey: Any]? = nil) -> ResultValue<String> {
+    self.createDirectoryCalls.append((path: string, intermediateDirectories: intermediateDirectories))
+    return .success(value: string)
   }
 }
