@@ -67,6 +67,14 @@ class FileSystem {
       return .failure(reason: .pathAlreadyExists)
     }
 
+    guard let parentPath = path.parent(), exists(path: parentPath) else {
+      return .failure(reason: .invalidPath(path: string))
+    }
+
+    // do some travers ...
+
+//    let inode = self.directories.
+
     return .success
   }
 
@@ -78,36 +86,16 @@ class FileSystem {
       return .failure(reason: .invalidPath(path: string))
     }
 
-    let rootList = self.directories.list(inodeId: FileSystem.rootInodeId)!
-    let list = path
-        .components()
-        .dropFirst()
-        .reduce(rootList) { [unowned self] (inodeIdArray: [String: Int], component: String) in
-          guard let guardInodeId = inodeIdArray["."],
-                let guardNextList = self.directories.list(inodeId: guardInodeId),
-                let guardNextInodeId = guardNextList[component],
-                let list = self.directories.list(inodeId: guardNextInodeId) else {
-            return [:]
-          }
-          return list
-        }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
-          var mutableResult = result
-          mutableResult[tuple.key] = self.inodes.inode(by: tuple.value).value()!
-          return mutableResult
-        }
-
-    guard !list.isEmpty else {
+    guard let inodes = inodes(at: path) else {
       return .failure(reason: .inodeNotFound)
     }
 
-    let inode = list["."]!
-
-    guard inode.type == .directory else {
+    guard let inode = inodes["."], inode.type == .directory else {
       return .failure(reason: .notADirectory)
     }
 
-    let result = list.map { (key, _) in
-          key
+    let result = inodes.map {
+          $0.key
         }
         .filter {
           $0 != "." && $0 != ".."
@@ -131,8 +119,34 @@ class FileSystem {
       currentPath = unwrappedCurrentPath.parent()
     }
     for currentPath in toCreateStack.reversed() {
-      _ = createDirectory(path: currentPath)
+      createDirectory(path: currentPath)
     }
+  }
+
+  private func inodes(at path: Path) -> [String: Inode]? {
+    let rootList = self.directories.list(inodeId: FileSystem.rootInodeId)!
+    let list = path
+        .components()
+        .dropFirst()
+        .reduce(rootList) { [unowned self] (inodeIdArray: [String: Int], component: String) in
+          guard let guardInodeId = inodeIdArray["."],
+                let guardNextList = self.directories.list(inodeId: guardInodeId),
+                let guardNextInodeId = guardNextList[component],
+                let list = self.directories.list(inodeId: guardNextInodeId) else {
+            return [:]
+          }
+          return list
+        }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
+          var mutableResult = result
+          mutableResult[tuple.key] = self.inodes.inode(by: tuple.value).value()!
+          return mutableResult
+        }
+
+    guard !list.isEmpty else {
+      return nil
+    }
+
+    return list
   }
 
   private func exists(path: Path) -> Bool {
@@ -166,7 +180,8 @@ class FileSystem {
     return .success(value: inodeId)
   }
 
-  func createDirectory(path: Path, createIntermediates: Bool = false) -> ResultValue<String> {
+  @discardableResult
+  private func createDirectory(path: Path, createIntermediates: Bool = false) -> ResultValue<String> {
     return addInode(.directory, path: path)
         .map {
           .success(value: path.description)

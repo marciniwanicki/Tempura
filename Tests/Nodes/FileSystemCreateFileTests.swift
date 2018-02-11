@@ -8,14 +8,16 @@ import XCTest
 class FileSystemCreateFileTests: XCTestCase {
 
   private var sut = Tempura.FileSystem()
-  private let inodes = Inodes()
-  private let directories = Directories(rootInodeId: Tempura.FileSystem.rootInodeId)
-  private let files = Files()
+  private var inodes = Inodes()
+  private var directories = Directories(rootInodeId: Tempura.FileSystem.rootInodeId)
+  private var files = Files()
 
   override func setUp() {
-    self.sut = Tempura.FileSystem(inodes: inodes,
-        directories: directories,
-        files: files)
+    inodes = Inodes()
+    inodes.add(FileSystem.rootInodeId, Inode(type: .directory))
+    directories = Directories(rootInodeId: Tempura.FileSystem.rootInodeId)
+    files = Files()
+    sut = Tempura.FileSystem(inodes: inodes, directories: directories, files: files)
   }
 
   func testCreateFileWithInvalidPath() {
