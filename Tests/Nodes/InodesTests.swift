@@ -7,17 +7,19 @@ import XCTest
 
 class InodesTests: XCTestCase {
 
-  func testInodeWhenEmpty() {
-    // given
-    let sut = Inodes()
+  private var sut = Inodes()
 
+  override func setUp() {
+    sut = Inodes()
+  }
+
+  func testInodeWhenEmpty() {
     // when / then
     XCTAssertFalse(sut.inode(by: 0).isSuccess())
   }
 
   func testAddWhenEmpty() {
     // given
-    let sut = Inodes()
     let inode = Inode(type: .directory)
 
     // when
@@ -29,7 +31,6 @@ class InodesTests: XCTestCase {
 
   func testAddWhenSameInodeIdIsAlreadyAdded() {
     // given
-    let sut = Inodes()
     let inode = Inode(type: .directory)
     let inode2 = Inode(type: .file)
     sut.add(1, inode)

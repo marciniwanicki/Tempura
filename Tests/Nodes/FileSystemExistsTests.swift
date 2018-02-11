@@ -7,27 +7,32 @@ import XCTest
 
 class FileSystemExistsTests: XCTestCase {
 
-  func testExistsRootDirectory() {
-    // given
-    let sut = Tempura.FileSystem()
+  private var sut = Tempura.FileSystem()
 
+  override func setUp() {
+    sut = Tempura.FileSystem()
+  }
+
+  func testExistsRootDirectory() {
     // when / then
     XCTAssertTrue(sut.exists(path: "/"))
   }
 
   func testExistsWhenDirectoryDoesNotExist() {
-    // given
-    let sut = Tempura.FileSystem()
-
     // when / then
     XCTAssertFalse(sut.exists(path: "/doesNotExist"))
   }
 
   func testExistsWhenUsingRelativePath() {
-    // given
-    let sut = Tempura.FileSystem()
-
     // when / then
     XCTAssertFalse(sut.exists(path: "relative"))
+  }
+
+  func testExistsWhenDirectoryExists() {
+    // given
+    sut.createDirectory(path: "/A")
+
+    // when / then
+    XCTAssertTrue(sut.exists(path: "/A"))
   }
 }

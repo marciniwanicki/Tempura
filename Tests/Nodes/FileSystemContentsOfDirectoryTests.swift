@@ -7,10 +7,13 @@ import XCTest
 
 class FileSystemContentsOfDirectoryTests: XCTestCase {
 
-  func testContentsOfDirectoryWhenInvalidPath() {
-    // given
-    let sut = FileSystem()
+  private var sut = FileSystem()
 
+  override func setUp() {
+    sut = FileSystem()
+  }
+
+  func testContentsOfDirectoryWhenInvalidPath() {
     // when
     let result = sut.contentsOfDirectory(atPath: "invalidPath///",
         includingPropertiesForKeys: nil,
@@ -21,9 +24,6 @@ class FileSystemContentsOfDirectoryTests: XCTestCase {
   }
 
   func testContentsOfDirectoryWhenEmptyRoot() {
-    // given
-    let sut = FileSystem()
-
     // when
     let result = sut.contentsOfDirectory(atPath: "/",
         includingPropertiesForKeys: nil,
@@ -35,9 +35,8 @@ class FileSystemContentsOfDirectoryTests: XCTestCase {
 
   func testContentsOfDirectoryWhenContainsTwoDirectories() {
     // given
-    let sut = FileSystem()
-    _ = sut.createDirectory(path: "/A")
-    _ = sut.createDirectory(path: "/B")
+    sut.createDirectory(path: "/A")
+    sut.createDirectory(path: "/B")
 
     // when
     let result = sut.contentsOfDirectory(atPath: "/",
@@ -50,8 +49,7 @@ class FileSystemContentsOfDirectoryTests: XCTestCase {
 
   func testContentsOfDirectoryWhenSubdirectoryDoesNotExist() {
     // given
-    let sut = FileSystem()
-    _ = sut.createDirectory(path: "/A")
+    sut.createDirectory(path: "/A")
 
     // when
     let result = sut.contentsOfDirectory(atPath: "/A/B",

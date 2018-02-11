@@ -16,6 +16,7 @@ class Directories {
     return self.list[inodeId]
   }
 
+  @discardableResult
   func add(inode: (inodeId: Int, filename: String), parentInodeId: Int, directory: Bool = false) -> ResultValue<Int> {
     guard var parentDirectory = self.list[parentInodeId] else {
       return .failure(reason: .inodeNotFound)

@@ -6,18 +6,28 @@ import Foundation
 
 class FileSystem {
 
-  private static let rootInodeId: Int = 1
+  static let rootInodeId: Int = 1
 
   private let directories: Directories
+  private let files: Files
   private let inodes: Inodes
 
   private var inodeIdCounter: Int = FileSystem.rootInodeId
 
-  init() {
-    self.inodes = Inodes()
-    self.inodes.add(self.inodeIdCounter, Inode(type: .directory))
+  init(inodes: Inodes, directories: Directories, files: Files) {
+    self.inodes = inodes
+    self.directories = directories
+    self.files = files
+  }
 
-    self.directories = Directories(rootInodeId: self.inodeIdCounter)
+  convenience init() {
+    let inodes = Inodes()
+    inodes.add(FileSystem.rootInodeId, Inode(type: .directory))
+
+    let directories = Directories(rootInodeId: FileSystem.rootInodeId)
+    let files = Files()
+
+    self.init(inodes: inodes, directories: directories, files: files)
   }
 
   func exists(path string: String) -> Bool {
@@ -33,6 +43,7 @@ class FileSystem {
         .map(lookupInode)
   }
 
+  @discardableResult
   func createDirectory(path string: String, createIntermediates: Bool = false) -> ResultValue<String> {
     return ResultValue(UnixPath(path: string), .invalidPath(path: string))
         .map { [unowned self] in
@@ -42,6 +53,21 @@ class FileSystem {
 
           return createDirectory(path: $0)
         }
+  }
+
+  @discardableResult
+  func createFile(atPath string: String,
+                  contents data: Data?,
+                  attributes attr: [FileAttributeKey: Any]? = nil) -> Result {
+    guard let path = UnixPath(path: string) else {
+      return .failure(reason: .invalidPath(path: string))
+    }
+
+    guard !exists(path: path) else {
+      return .failure(reason: .pathAlreadyExists)
+    }
+
+    return .success
   }
 
   func contentsOfDirectory(atPath string: String,
@@ -161,8 +187,7 @@ class FileSystem {
     let newInodeId = generateInodeId()
 
     // add operation cannot fail at that stage
-    _ = self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()),
-        parentInodeId: parentNodeId)
+    self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()), parentInodeId: parentNodeId)
 
     self.inodes.add(newInodeId, inode)
 
