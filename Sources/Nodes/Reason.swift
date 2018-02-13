@@ -9,6 +9,7 @@ enum Reason {
   case pathAlreadyExists
   case inodeNotFound
   case notADirectory
+  case operationNotAllowed
 }
 
 extension Reason: Equatable {
@@ -19,6 +20,7 @@ extension Reason: Equatable {
     case (.pathAlreadyExists, .pathAlreadyExists): return true
     case (.inodeNotFound, .inodeNotFound): return true
     case (.notADirectory, .notADirectory): return true
+    case (.operationNotAllowed, .operationNotAllowed): return true
     default: return false
     }
   }

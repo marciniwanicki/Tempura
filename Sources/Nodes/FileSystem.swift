@@ -84,6 +84,30 @@ class FileSystem {
     }
   }
 
+  func removeItem(atPath string: String) -> Result {
+    guard let path = UnixPath(path: string) else {
+      return .failure(reason: .invalidPath(path: string))
+    }
+
+    // TODO: Implement me!
+    return .success
+  }
+
+  func replaceItem(at originalItemString: String,
+                   withItemAt newItemString: String,
+                   backupItemName: String?,
+                   options: Foundation.FileManager.ItemReplacementOptions = []) -> Result {
+
+    // TODO: Implement me!
+    return .success
+  }
+
+  func trashItem(at string: String) -> Result {
+
+    // TODO: Implement me!
+    return .success
+  }
+
   func contentsOfDirectory(atPath string: String,
                            includingPropertiesForKeys keys: [URLResourceKey]?,
                            options mask: Foundation.FileManager.DirectoryEnumerationOptions)

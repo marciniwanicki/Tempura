@@ -37,6 +37,7 @@
 		524E8C6DFE60B9016D7A6B04 /* FileSystemCreateDirectoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E83C75604B841530175E8 /* FileSystemCreateDirectoryTests.swift */; };
 		524E8C717B175F060E0A3203 /* InodesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8F9E1AD5AE5D0766727F /* InodesTests.swift */; };
 		524E8CB32D13DDFBF00146AB /* FileSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8E8BF7818B483CB9237F /* FileSystemMock.swift */; };
+		524E8D9CB0BBA601526F61AF /* FileSystemRemoveItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E8C1C9C87557B55797E66 /* FileSystemRemoveItemTests.swift */; };
 		524E8DE4D8B36D78146A6EBA /* FileSystemLookupInodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E834231E779006226ECAF /* FileSystemLookupInodeTests.swift */; };
 		524E8E52B642EC8453357A98 /* DictionariesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88AFA14764CBD7B193A8 /* DictionariesTests.swift */; };
 		524E8F022A5141FD46164111 /* TempuraFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */; };
@@ -92,6 +93,7 @@
 		524E88C12C9EC60531912674 /* TempuraFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempuraFileManagerTests.swift; sourceTree = "<group>"; };
 		524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemContentsOfDirectoryTests.swift; sourceTree = "<group>"; };
 		524E8B84940F3469FB59B929 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		524E8C1C9C87557B55797E66 /* FileSystemRemoveItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemRemoveItemTests.swift; sourceTree = "<group>"; };
 		524E8C3DB0B460CFD93DAD21 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		524E8D84E7F1F63302A8AF10 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		524E8DA15698CCF284CD6E06 /* Reason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reason.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				524E89FE5B3AAA950615327D /* FileSystemContentsOfDirectoryTests.swift */,
 				524E8B84940F3469FB59B929 /* ResultTests.swift */,
 				524E85B709710E638DF70A9C /* FileSystemCreateFileTests.swift */,
+				524E8C1C9C87557B55797E66 /* FileSystemRemoveItemTests.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				524E82E37B1BAD86F3E14DFA /* FileSystemContentsOfDirectoryTests.swift in Sources */,
 				524E804ED401C3ADDABFB7EC /* ResultTests.swift in Sources */,
 				524E812C39F64ABF794F657F /* FileSystemCreateFileTests.swift in Sources */,
+				524E8D9CB0BBA601526F61AF /* FileSystemRemoveItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
