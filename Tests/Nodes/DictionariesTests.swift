@@ -20,11 +20,8 @@ class DictionariesTests: XCTestCase {
     // given
     let sut = Directories(rootInodeId: 1)
 
-    // when
-    let result = sut.add(inode: (2, "filename"), parentInodeId: 1)
-
-    // then
-    XCTAssertEqual(ResultValue.success(value: 2), result)
+    // when / thn
+    XCTAssertNoThrow(try sut.add(inode: (2, "filename"), parentInodeId: 1))
     XCTAssertEqual([".": 1, "..": 1, "filename": 2], sut.list(inodeId: 1)!)
   }
 
@@ -32,10 +29,9 @@ class DictionariesTests: XCTestCase {
     // given
     let sut = Directories(rootInodeId: 1)
 
-    // when
-    let result = sut.add(inode: (2, "filename"), parentInodeId: 3)
-
-    // then
-    XCTAssertEqual(ResultValue.failure(reason: .inodeNotFound), result)
+    // when / then
+    XCTAssertThrowsError(try sut.add(inode: (2, "filename"), parentInodeId: 3)) {
+      XCTAssertEqual(.inodeNotFound, reason($0))
+    }
   }
 }

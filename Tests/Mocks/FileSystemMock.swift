@@ -13,8 +13,7 @@ class FileSystemMock: FileSystem {
 
   override func createDirectory(path string: String,
                                 withIntermediateDirectories intermediateDirectories: Bool = false,
-                                attributes: [FileAttributeKey: Any]? = nil) -> ResultValue<String> {
+                                attributes: [FileAttributeKey: Any]? = nil) throws {
     self.createDirectoryCalls.append((path: string, intermediateDirectories: intermediateDirectories))
-    return .success(value: string)
   }
 }

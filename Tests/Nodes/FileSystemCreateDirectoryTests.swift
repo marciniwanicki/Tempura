@@ -15,37 +15,42 @@ class FileSystemCreateDirectoryTests: XCTestCase {
 
   func testCreateDirectoryRootPath() {
     // when / then
-    XCTAssertEqual(ResultValue.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/"))
+    XCTAssertThrowsError(try sut.createDirectory(path: "/")) {
+        XCTAssertEqual(.pathAlreadyExists, reason($0))
+    }
   }
 
   func testCreateDirectoryInvalidPath() {
     // when / then
-    XCTAssertEqual(ResultValue.failure(reason: .invalidPath(path: "invalidPath/file.txt")),
-        sut.createDirectory(path: "invalidPath/file.txt"))
+    XCTAssertThrowsError(try sut.createDirectory(path: "invalidPath/file.txt")) {
+        XCTAssertEqual(.invalidPath(path: "invalidPath/file.txt"), reason($0))
+    }
   }
 
   func testCreateDirectoryValidPath() {
     // when / then
-    XCTAssertEqual(ResultValue.success(value: "/testme"), sut.createDirectory(path: "/testme"))
+    XCTAssertNoThrow(try sut.createDirectory(path: "/testme"))
   }
 
   func testCreateDirectoryValidPathWithIntermediates() {
     // when / then
-    XCTAssertEqual(ResultValue.success(value: "/testme/testme2/testme3"),
-        sut.createDirectory(path: "/testme/testme2/testme3", withIntermediateDirectories: true))
+    XCTAssertNoThrow(try sut.createDirectory(path: "/testme/testme2/testme3", withIntermediateDirectories: true))
   }
 
   func testCreateDirectoryPathAlreadyExistsAndNoSubdirectory() {
     // given
-    sut.createDirectory(path: "/testme")
+    try? sut.createDirectory(path: "/testme")
 
     // when / then
-    XCTAssertEqual(ResultValue.failure(reason: .pathAlreadyExists), sut.createDirectory(path: "/testme"))
+    XCTAssertThrowsError(try sut.createDirectory(path: "/testme")) {
+        XCTAssertEqual(.pathAlreadyExists, reason($0))
+    }
   }
 
   func testCreateDirectoryParentPathDoesExist() {
     // when / then
-    XCTAssertEqual(ResultValue.failure(reason: .invalidPath(path: "/test")),
-        sut.createDirectory(path: "/test/test.txt"))
+    XCTAssertThrowsError(try sut.createDirectory(path: "/test/test.txt")) {
+        XCTAssertEqual(.inodeNotFound, reason($0))
+    }
   }
 }

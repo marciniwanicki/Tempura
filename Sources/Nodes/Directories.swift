@@ -16,18 +16,15 @@ class Directories {
     return self.list[inodeId]
   }
 
-  @discardableResult
-  func add(inode: (inodeId: Int, filename: String), parentInodeId: Int, directory: Bool = false) -> ResultValue<Int> {
+  func add(inode: (inodeId: Int, filename: String), parentInodeId: Int, directory: Bool = false) throws  {
     guard var parentDirectory = self.list[parentInodeId] else {
-      return .failure(reason: .inodeNotFound)
+      throw Reason.inodeNotFound
     }
 
     parentDirectory[inode.filename] = inode.inodeId
 
     self.list[parentInodeId] = parentDirectory
     self.list[inode.inodeId] = createDirectory(inodeId: inode.inodeId, parentInodeId: parentInodeId)
-
-    return .success(value: inode.inodeId)
   }
 
   private func createDirectory(inodeId: Int, parentInodeId: Int) -> [String: Int] {

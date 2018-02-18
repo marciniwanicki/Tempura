@@ -30,7 +30,11 @@ class FileSystemExistsTests: XCTestCase {
 
   func testExistsWhenDirectoryExists() {
     // given
-    sut.createDirectory(path: "/A")
+    do {
+        try sut.createDirectory(path: "/A")
+    } catch {
+        XCTFail("createDirectory thrown an error")
+    }
 
     // when / then
     XCTAssertTrue(sut.exists(path: "/A"))

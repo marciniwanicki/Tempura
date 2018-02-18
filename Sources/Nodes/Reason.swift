@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Reason {
+enum Reason: Error {
   case invalidPath(path: String)
   case pathAlreadyExists
   case inodeNotFound

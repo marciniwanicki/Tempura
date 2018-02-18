@@ -12,10 +12,14 @@ class Inodes {
     self.list[inodeId] = inode
   }
 
-  func inode(by inodeId: Int) -> ResultValue<Inode> {
-    guard let inode = self.list[inodeId] else {
-      return .failure(reason: .inodeNotFound)
+  func remove(_ inodeId: Int) {
+    guard let index = self.list.index(forKey: inodeId) else {
+      return
     }
-    return .success(value: inode)
+    self.list.remove(at: index)
+  }
+
+  func inode(by inodeId: Int) -> Inode? {
+    return self.list[inodeId]
   }
 }

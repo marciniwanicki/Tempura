@@ -8,11 +8,11 @@ class FileSystem {
 
   static let rootInodeId: Int = 1
 
-  private let directories: Directories
-  private let files: Files
-  private let inodes: Inodes
+  fileprivate let directories: Directories
+  fileprivate let files: Files
+  fileprivate let inodes: Inodes
 
-  private var inodeIdCounter: Int = FileSystem.rootInodeId
+  fileprivate var inodeIdCounter: Int = FileSystem.rootInodeId
 
   init(inodes: Inodes, directories: Directories, files: Files) {
     self.inodes = inodes
@@ -31,97 +31,80 @@ class FileSystem {
   }
 
   func exists(path string: String) -> Bool {
-    guard let path = UnixPath(path: string) else {
+    do {
+      let path = try unixPath(from: string)
+      _ = try inodeId(by: path)
+      return true
+    } catch {
       return false
     }
-
-    return exists(path: path)
   }
 
-  func lookupInode(path string: String) -> ResultValue<Inode> {
-    return ResultValue(UnixPath(path: string), .invalidPath(path: string))
-        .map(lookupInode)
-  }
-
-  @discardableResult
   func createDirectory(path string: String,
                        withIntermediateDirectories intermediateDirectories: Bool = false,
-                       attributes: [FileAttributeKey: Any]? = nil) -> ResultValue<String> {
-    return ResultValue(UnixPath(path: string), .invalidPath(path: string))
-        .map { [unowned self] in
-          if intermediateDirectories {
-            self.createIntermediates(path: $0, attributes: attributes)
-          }
+                       attributes: [FileAttributeKey: Any]? = nil) throws {
+    let path = try unixPath(from: string)
 
-          return createDirectory(path: $0, attributes: attributes)
-        }
-  }
-
-  @discardableResult
-  func createFile(atPath string: String,
-                  contents data: Data?,
-                  attributes attr: [FileAttributeKey: Any]? = nil) -> Result {
-    guard let path = UnixPath(path: string) else {
-      return .failure(reason: .invalidPath(path: string))
+    /**
+    TODO: Not sure it that works fine, what happens if /not-ex/not-ex/exists, folders are created in higher directories?
+    */
+    if intermediateDirectories {
+      try createIntermediates(path: path, attributes: attributes)
     }
 
+    try createDirectory(path: path, attributes: attributes)
+  }
+
+  func createFile(atPath string: String,
+                  contents data: Data?,
+                  attributes attr: [FileAttributeKey: Any]? = nil) throws {
+    let path = try unixPath(from: string)
+
     guard !exists(path: path) else {
-      return .failure(reason: .pathAlreadyExists)
+      throw Reason.pathAlreadyExists
     }
 
     guard let parentPath = path.parent(), exists(path: parentPath) else {
-      return .failure(reason: .invalidPath(path: string))
+      throw Reason.invalidPath(path: string)
     }
 
     let candidate = Inode(type: .file, attributes: attr)
-    switch addInode(candidate, path: path) {
-    case let (.failure(reason:r)): return .failure(reason: r)
-    case let (.success(value:inodeId)):
-      if let data = data {
-        self.files.saveData(inodeId: inodeId, data: data)
-      }
-      return .success
-    }
+
+    try addInode(candidate, path: path)
   }
 
-  func removeItem(atPath string: String) -> Result {
-    guard let path = UnixPath(path: string) else {
-      return .failure(reason: .invalidPath(path: string))
-    }
+  func removeItem(atPath string: String) throws {
+    let path = try unixPath(from: string)
+    _ = try self.inodeId(by: path)
 
-    // TODO: Implement me!
-    return .success
+    // TODO: Finish me
   }
 
   func replaceItem(at originalItemString: String,
                    withItemAt newItemString: String,
                    backupItemName: String?,
-                   options: Foundation.FileManager.ItemReplacementOptions = []) -> Result {
-
+                   options: Foundation.FileManager.ItemReplacementOptions = []) throws {
     // TODO: Implement me!
-    return .success
   }
 
-  func trashItem(at string: String) -> Result {
-
+  func trashItem(at string: String) throws {
     // TODO: Implement me!
-    return .success
   }
 
   func contentsOfDirectory(atPath string: String,
                            includingPropertiesForKeys keys: [URLResourceKey]?,
                            options mask: Foundation.FileManager.DirectoryEnumerationOptions)
-          -> ResultSequence<[String]> {
+  throws -> [String] {
     guard let path = UnixPath(path: string) else {
-      return .failure(reason: .invalidPath(path: string))
+      throw Reason.invalidPath(path: string)
     }
 
     guard let inodes = inodes(at: path) else {
-      return .failure(reason: .inodeNotFound)
+      throw Reason.inodeNotFound
     }
 
     guard let inode = inodes["."], inode.type == .directory else {
-      return .failure(reason: .notADirectory)
+      throw Reason.notADirectory
     }
 
     let result = inodes.map {
@@ -136,10 +119,10 @@ class FileSystem {
         }
         .sorted()
 
-    return ResultSequence.success(value: result)
+    return result
   }
 
-  private func createIntermediates(path: Path, attributes: [FileAttributeKey: Any]?) {
+  private func createIntermediates(path: Path, attributes: [FileAttributeKey: Any]?) throws {
     var toCreateStack = [Path]()
     var currentPath = path.parent()
     while let unwrappedCurrentPath = currentPath {
@@ -149,7 +132,7 @@ class FileSystem {
       currentPath = unwrappedCurrentPath.parent()
     }
     for currentPath in toCreateStack.reversed() {
-      createDirectory(path: currentPath, attributes: attributes)
+      try createDirectory(path: currentPath, attributes: attributes)
     }
   }
 
@@ -168,7 +151,7 @@ class FileSystem {
           return list
         }.reduce([String: Inode]()) { [unowned self] (result: [String: Inode], tuple: (key: String, value: Int)) in
           var mutableResult = result
-          mutableResult[tuple.key] = self.inodes.inode(by: tuple.value).value()!
+          mutableResult[tuple.key] = self.inodes.inode(by: tuple.value)!
           return mutableResult
         }
 
@@ -180,17 +163,78 @@ class FileSystem {
   }
 
   private func exists(path: Path) -> Bool {
-    return lookupInode(path: path).isSuccess()
+    do {
+      _ = try inode(by: path)
+    } catch {
+      return false
+    }
+    return true
   }
 
-  private func lookupInode(path: Path) -> ResultValue<Inode> {
-    return lookupInodeId(path: path)
-        .map(self.inodes.inode)
+  private func createDirectory(path: Path, attributes: [FileAttributeKey: Any]?) throws {
+    let inode = Inode(type: .directory, attributes: attributes)
+
+    try addInode(inode, path: path)
   }
 
-  private func lookupInodeId(path: Path) -> ResultValue<Int> {
+  private func addInode(_ inode: Inode, path: Path) throws {
+    guard !exists(path: path) else {
+      throw Reason.pathAlreadyExists
+    }
+
+    let parentPath = path.parent()!
+    let parentNodeId = try inodeId(by: parentPath)
+    let newInodeId = generateInodeId()
+
+    try self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()), parentInodeId: parentNodeId)
+
+    self.inodes.add(newInodeId, inode)
+  }
+
+  private func removeInode(_ inodeId: Int) throws {
+    guard let inode = inodes.inode(by: inodeId) else {
+      throw Reason.inodeNotFound
+    }
+
+    self.inodes.remove(inodeId)
+    if inode.type == .file {
+      self.files.clearData(inodeId: inodeId)
+    }
+    if inode.type == .directory {
+      // TODO: Implement removing directories!
+    }
+  }
+
+  private func generateInodeId() -> Int {
+    self.inodeIdCounter += 1
+    return self.inodeIdCounter
+  }
+}
+
+extension FileSystem {
+
+  fileprivate func unixPath(from string: String) throws -> UnixPath {
+    guard let unixPath = UnixPath(path: string) else {
+      throw Reason.invalidPath(path: string)
+    }
+    return unixPath
+  }
+
+  fileprivate func inode(by path: Path) throws -> Inode {
+    let inodeId = try self.inodeId(by: path)
+    return try inode(by: inodeId)
+  }
+
+  fileprivate func inode(by inodeId: Int) throws -> Inode {
+    guard let inode = self.inodes.inode(by: inodeId) else {
+      throw Reason.inodeNotFound
+    }
+    return inode
+  }
+
+  fileprivate func inodeId(by path: Path) throws -> Int {
     if path.parent() == nil {
-      return .success(value: FileSystem.rootInodeId)
+      return FileSystem.rootInodeId
     }
 
     var inodeId = FileSystem.rootInodeId
@@ -200,48 +244,13 @@ class FileSystem {
       let next = components[i + 1]
       let inodesDictionary = self.directories.list(inodeId: inodeId)
 
-      guard let subinodeId = inodesDictionary?[next] else {
-        return .failure(reason: .inodeNotFound)
+      guard let subInodeId = inodesDictionary?[next] else {
+        throw Reason.inodeNotFound
       }
 
-      inodeId = subinodeId
+      inodeId = subInodeId
     }
 
-    return .success(value: inodeId)
-  }
-
-  @discardableResult
-  private func createDirectory(path: Path, attributes: [FileAttributeKey: Any]?) -> ResultValue<String> {
-    let inode = Inode(type: .directory, attributes: attributes)
-    return addInode(inode, path: path)
-        .map {
-          .success(value: path.description)
-        }
-  }
-
-  private func addInode(_ inode: Inode, path: Path) -> ResultValue<Int> {
-    guard !lookupInode(path: path).isSuccess() else {
-      return .failure(reason: .pathAlreadyExists)
-    }
-
-    let parentPath: Path = path.parent()!
-
-    guard let parentNodeId = lookupInodeId(path: parentPath).value() else {
-      return .failure(reason: .invalidPath(path: parentPath.description))
-    }
-
-    let newInodeId = generateInodeId()
-
-    // add operation cannot fail at that stage
-    self.directories.add(inode: (inodeId: newInodeId, filename: path.lastComponent()), parentInodeId: parentNodeId)
-
-    self.inodes.add(newInodeId, inode)
-
-    return .success(value: newInodeId)
-  }
-
-  private func generateInodeId() -> Int {
-    self.inodeIdCounter += 1
-    return self.inodeIdCounter
+    return inodeId
   }
 }

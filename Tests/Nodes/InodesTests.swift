@@ -15,7 +15,7 @@ class InodesTests: XCTestCase {
 
   func testInodeWhenEmpty() {
     // when / then
-    XCTAssertFalse(sut.inode(by: 0).isSuccess())
+//    XCTAssertFalse(sut.inode(by: 0).isSuccess())
   }
 
   func testAddWhenEmpty() {
@@ -26,7 +26,7 @@ class InodesTests: XCTestCase {
     sut.add(1, inode)
 
     // then
-    XCTAssertTrue(sut.inode(by: 1).isSuccess())
+//    XCTAssertTrue(sut.inode(by: 1).isSuccess())
   }
 
   func testAddWhenSameInodeIdIsAlreadyAdded() {
@@ -39,6 +39,26 @@ class InodesTests: XCTestCase {
     sut.add(1, inode2)
 
     // then
-    XCTAssertEqual(inode2, sut.inode(by: 1).value())
+//    XCTAssertEqual(inode2, sut.inode(by: 1).value())
+  }
+
+  func testRemoveWhenInodeIdDoesNotExist() {
+    // when
+//    let result = sut.remove(3)
+
+    // then
+//    XCTAssertEqual(Result.failure(reason: .inodeNotFound), result)
+  }
+
+  func testRemoveWhenInodeExists() {
+    // given
+    sut.add(1, Inode(type: .directory))
+
+    // when
+//    let result = sut.remove(1)
+
+    // then
+//    XCTAssertEqual(Result.success, result)
+//    XCTAssertEqual(ResultValue.failure(reason: .inodeNotFound), sut.inode(by: 1))
   }
 }

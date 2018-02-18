@@ -15,4 +15,11 @@ class Files {
   func saveData(inodeId: Int, data: Data) {
     self.list[inodeId] = data
   }
+
+  func clearData(inodeId: Int) {
+    guard let index = self.list.index(forKey: inodeId) else {
+      return
+    }
+    self.list.remove(at: index)
+  }
 }
